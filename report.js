@@ -61,6 +61,22 @@ async function loadReportData() {
     safelySetStyle('takeaway_row_2', 'display', data.show_t2);
     safelySetStyle('takeaway_row_3', 'display', data.show_t3);
 
+    // Add these lines inside your loadReportData() function:
+    safelySetText('meta_industry', data.company_industry);
+    safelySetText('law_offer_score', data.law_offer_score);
+    safelySetText('law_creative_score', data.law_creative_score);
+    safelySetText('law_brand_score', data.law_brand_score);
+    safelySetText('law_conversion_score', data.law_conversion_score);
+    safelySetText('law_measurement_score', data.law_measurement_score);
+
+    safelySetStyle('law_offer_bar', 'width', data.law_offer_score + '%');
+    safelySetStyle('law_creative_bar', 'width', data.law_creative_score + '%');
+    safelySetStyle('law_brand_bar', 'width', data.law_brand_score + '%');
+    safelySetStyle('law_conversion_bar', 'width', data.law_conversion_score + '%');
+    safelySetStyle('law_measurement_bar', 'width', data.law_measurement_score + '%');
+
+    safelySetText('sprint_duration_btn', data.sprint_duration); // For the button text
+
   } catch (error) {
     console.error("Failed to load report data:", error);
   }
