@@ -282,9 +282,18 @@ function populateDashboard(data) {
 
 /* ---------------- load & run ---------------- */
 
-// Decodes a base64 string that may contain UTF-8 (e.g. non-Latin company
-// names) back into text. Plain atob() alone mangles anything outside
-// basic ASCII, so this does the extra byte-safe unescaping.
+// Converts base64url (the "-"/"_" no-padding variant that's safe to drop
+// straight into a URL with zero percent-encoding) back to standard base64
+// so atob() can read it.
+function base64UrlToBase64(base64url) {
+  let base64 = base64url.replace(/-/g, '+').replace(/_/g, '/');
+  while (base64.length % 4 !== 0) base64 += '=';
+  return base64;
+}
+
+// Decodes base64 that may contain UTF-8 (e.g. non-Latin company names)
+// back into text. Plain atob() alone mangles anything outside basic
+// ASCII, so this does the extra byte-safe unescaping.
 function base64ToUtf8(base64) {
   const binary = atob(base64);
   const percentEncoded = Array.prototype.map
@@ -293,25 +302,63 @@ function base64ToUtf8(base64) {
   return decodeURIComponent(percentEncoded);
 }
 
-// Reads ?data=<base64-encoded-json> from the page URL. This is how Zapier
-// hands data to this page for one-shot render-to-PDF runs: no backend,
-// no storage, each report is fully self-contained in its own link.
+// Reads ?data=<base64url-encoded-json> from the page URL. This is how
+// Zapier hands data to this page for one-shot render-to-PDF runs: no
+// backend, no storage, each report is fully self-contained in its own
+// link. Returns { present, data, error } so the caller can tell the
+// difference between "no data param at all" (fine, use sample data) and
+// "data param was there but broken" (should be visible, not silently
+// swallowed into showing sample data by mistake).
 function getDataFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const encoded = params.get('data');
-  if (!encoded) return null;
+  if (!encoded) return { present: false };
   try {
-    return JSON.parse(base64ToUtf8(encoded));
+    const data = JSON.parse(base64ToUtf8(base64UrlToBase64(encoded)));
+    return { present: true, data };
   } catch (err) {
-    console.error('Failed to parse ?data= parameter:', err);
-    return null;
+    return { present: true, error: err };
   }
 }
 
+function showLoadError(err) {
+  const banner = document.createElement('div');
+  banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#dc2626;color:#fff;' +
+    'font-family:sans-serif;font-size:14px;padding:8px 16px;z-index:9999;';
+  banner.textContent = `Dashboard data error: could not parse the "data" URL parameter (${err.message}). ` +
+    'Check the Zapier step that builds this URL — this page is showing empty fields, not sample data, ' +
+    'so the problem is visible instead of hidden.';
+  document.body.prepend(banner);
+  console.error('Failed to parse ?data= parameter:', err);
+}
+
+function showShapeWarning(data) {
+  const expectedKeys = ['company', 'dashboard', 'five_laws', 'growth_opportunity', 'recommended_sprint', 'roadmap_30_days', 'executive_presentation'];
+  const foundKeys = Object.keys(data || {});
+  const hasAnyExpected = expectedKeys.some((k) => foundKeys.includes(k));
+  if (hasAnyExpected) return;
+
+  const banner = document.createElement('div');
+  banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#f59e0b;color:#111827;' +
+    'font-family:sans-serif;font-size:13px;padding:8px 16px;z-index:9999;';
+  banner.textContent = `Dashboard data warning: JSON parsed OK, but none of the expected top-level keys ` +
+    `(company, dashboard, five_laws, ...) were found. Top-level keys received: [${foundKeys.join(', ') || 'none'}]. ` +
+    `This usually means the JSON got wrapped in an extra layer somewhere in Zapier (e.g. inputData.json is a ` +
+    `string instead of the object itself) — check what JSON.stringify() was actually called on.`;
+  document.body.prepend(banner);
+  console.warn('Unexpected data shape. Top-level keys:', foundKeys, data);
+}
+
 async function loadDashboard() {
-  const urlData = getDataFromUrl();
-  if (urlData) {
-    populateDashboard(urlData);
+  const urlResult = getDataFromUrl();
+
+  if (urlResult.present) {
+    if (urlResult.data) {
+      showShapeWarning(urlResult.data);
+      populateDashboard(urlResult.data);
+    } else {
+      showLoadError(urlResult.error);
+    }
     return;
   }
 
