@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{report_title}}</title>
+  <title id="page_title">Loading Report...</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,21 +16,20 @@
 
         <div class="sidebar-section">
           <div class="sidebar-label">ACCOUNT</div>
-          <div class="sidebar-value-primary" data-field="account.name">{{company_name}}</div>
-          <div class="sidebar-value-secondary" data-field="account.industry_sub">{{company_industry}}</div>
+          <div class="sidebar-value-primary" data-field="account.name" id="company_name"></div>
+          <div class="sidebar-value-secondary" data-field="account.industry_sub" id="company_industry"></div>
         </div>
 
         <div class="sidebar-section">
           <div class="sidebar-label">DECISION MAKER</div>
-          <div class="sidebar-value-primary" data-field="decision_maker.name">{{decision_maker_name}}</div>
-          <div class="sidebar-value-secondary" data-field="decision_maker.role">{{decision_maker_role}}</div>
+          <div class="sidebar-value-primary" data-field="decision_maker.name" id="decision_maker_name"></div>
+          <div class="sidebar-value-secondary" data-field="decision_maker.role" id="decision_maker_role"></div>
         </div>
 
         <div class="sidebar-section">
           <div class="sidebar-label">REPORT PURPOSE</div>
-          <div class="sidebar-purpose-text" data-field="report.purpose">
-            {{opening_summary}}
-          </div>
+          <div class="sidebar-purpose-text" data-field="report.purpose" id="opening_summary">
+            </div>
         </div>
       </div>
 
@@ -44,9 +43,8 @@
             </svg>
             <span class="opportunity-title">PRIMARY COMMERCIAL OPPORTUNITY</span>
           </div>
-          <div class="opportunity-desc" data-field="report.primary_opportunity">
-            {{primary_opportunity}}
-          </div>
+          <div class="opportunity-desc" data-field="report.primary_opportunity" id="primary_opportunity">
+            </div>
         </div>
       </div>
     </aside>
@@ -54,14 +52,14 @@
     <main class="main-content">
       <header class="main-header">
         <div class="header-left">
-          <h1 class="report-title" data-field="report.title">{{report_title}}</h1>
-          <p class="report-subtitle" data-field="report.subtitle">{{report_subtitle}}</p>
+          <h1 class="report-title" data-field="report.title" id="report_title"></h1>
+          <p class="report-subtitle" data-field="report.subtitle" id="report_subtitle"></p>
         </div>
         <div class="header-right">
           <div class="date-label">REPORT DATE</div>
           <div class="date-value">
-            <span data-field="report.date">{{report_date}}</span>
-            <span class="status-badge" data-field="report.status">{{report_status}}</span>
+            <span data-field="report.date" id="report_date"></span>
+            <span class="status-badge" data-field="report.status" id="report_status"></span>
           </div>
         </div>
       </header>
@@ -73,7 +71,7 @@
           </div>
           <div>
             <div class="meta-label">INDUSTRY</div>
-            <div class="meta-value" data-field="metadata.industry">{{company_industry}}</div>
+            <div class="meta-value" data-field="metadata.industry" id="meta_industry"></div>
           </div>
         </div>
         <div class="meta-item">
@@ -82,7 +80,7 @@
           </div>
           <div>
             <div class="meta-label">EMPLOYEES</div>
-            <div class="meta-value" data-field="metadata.employees">{{company_employees}}</div>
+            <div class="meta-value" data-field="metadata.employees" id="company_employees"></div>
           </div>
         </div>
         <div class="meta-item">
@@ -91,7 +89,7 @@
           </div>
           <div>
             <div class="meta-label">ESTABLISHED</div>
-            <div class="meta-value" data-field="metadata.established">{{company_established}}</div>
+            <div class="meta-value" data-field="metadata.established" id="company_established"></div>
           </div>
         </div>
         <div class="meta-item">
@@ -100,7 +98,7 @@
           </div>
           <div>
             <div class="meta-label">CURRENCY</div>
-            <div class="meta-value" data-field="metadata.currency">{{company_currency}}</div>
+            <div class="meta-value" data-field="metadata.currency" id="company_currency"></div>
           </div>
         </div>
         <div class="meta-item">
@@ -109,7 +107,7 @@
           </div>
           <div>
             <div class="meta-label">COUNTRY</div>
-            <div class="meta-value" data-field="metadata.country">{{company_country}}</div>
+            <div class="meta-value" data-field="metadata.country" id="company_country"></div>
           </div>
         </div>
       </section>
@@ -124,21 +122,19 @@
           <div class="gauge-box">
             <svg class="gauge-svg" viewBox="0 0 100 65">
               <path class="gauge-bg" d="M 15 60 A 35 35 0 0 1 85 60" fill="none" stroke="#f1f5f9" stroke-width="9" stroke-linecap="round"/>
-              <path class="gauge-fill" d="M 15 60 A 35 35 0 0 1 85 60" fill="none" stroke="#f59e0b" stroke-width="9" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="{{stroke_dashoffset}}"/>
+              <path class="gauge-fill" id="gauge_fill" d="M 15 60 A 35 35 0 0 1 85 60" fill="none" stroke="#f59e0b" stroke-width="9" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="110"/>
             </svg>
             <div class="gauge-text-center">
-              <span class="gauge-value" data-field="metrics.growth_score">{{score}}</span>
+              <span class="gauge-value" data-field="metrics.growth_score" id="score">0</span>
               <span class="gauge-max">/100</span>
             </div>
           </div>
 
-          <div class="score-label" data-field="metrics.growth_score_label">{{verdict}}</div>
+          <div class="score-label" data-field="metrics.growth_score_label" id="verdict"></div>
           
           <div class="score-alert">
             <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            <div class="alert-text" data-field="metrics.growth_score_desc">
-              {{summary}}
-            </div>
+            <div class="alert-text" data-field="metrics.growth_score_desc" id="summary"></div>
           </div>
 
           <div class="score-guide">
@@ -157,32 +153,32 @@
             <div class="law-item">
               <div class="law-icon-wrapper text-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 3v18M3 12h18"></path></svg></div>
               <div class="law-name">Offer</div>
-              <div class="law-bar-container"><div class="law-bar bg-green" style="width: {{law_offer_score}}%;"></div></div>
-              <div class="law-score"><strong>{{law_offer_score}}</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-green" id="law_offer_bar" style="width: 0%;"></div></div>
+              <div class="law-score"><strong id="law_offer_score">0</strong><span class="scale-max">/100</span></div>
             </div>
             <div class="law-item">
               <div class="law-icon-wrapper text-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2.3-1.2-4.4-3-5.7V7a4 4 0 0 0-8 0v2.3C6.2 10.6 5 12.7 5 15a7 7 0 0 0 7 7z"></path></svg></div>
               <div class="law-name">Creative</div>
-              <div class="law-bar-container"><div class="law-bar bg-orange" style="width: {{law_creative_score}}%;"></div></div>
-              <div class="law-score"><strong>{{law_creative_score}}</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-orange" id="law_creative_bar" style="width: 0%;"></div></div>
+              <div class="law-score"><strong id="law_creative_score">0</strong><span class="scale-max">/100</span></div>
             </div>
             <div class="law-item">
               <div class="law-icon-wrapper text-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
               <div class="law-name">Brand</div>
-              <div class="law-bar-container"><div class="law-bar bg-orange" style="width: {{law_brand_score}}%;"></div></div>
-              <div class="law-score"><strong>{{law_brand_score}}</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-orange" id="law_brand_bar" style="width: 0%;"></div></div>
+              <div class="law-score"><strong id="law_brand_score">0</strong><span class="scale-max">/100</span></div>
             </div>
             <div class="law-item">
               <div class="law-icon-wrapper text-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path></svg></div>
               <div class="law-name">Conversion</div>
-              <div class="law-bar-container"><div class="law-bar bg-red" style="width: {{law_conversion_score}}%;"></div></div>
-              <div class="law-score"><strong>{{law_conversion_score}}</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-red" id="law_conversion_bar" style="width: 0%;"></div></div>
+              <div class="law-score"><strong id="law_conversion_score">0</strong><span class="scale-max">/100</span></div>
             </div>
             <div class="law-item">
               <div class="law-icon-wrapper text-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
               <div class="law-name">Measurement</div>
-              <div class="law-bar-container"><div class="law-bar bg-red" style="width: {{law_measurement_score}}%;"></div></div>
-              <div class="law-score"><strong>{{law_measurement_score}}</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-red" id="law_measurement_bar" style="width: 0%;"></div></div>
+              <div class="law-score"><strong id="law_measurement_score">0</strong><span class="scale-max">/100</span></div>
             </div>
           </div>
 
@@ -216,9 +212,7 @@
                   </div>
                   HIGH IMPACT / QUICK WINS
                 </div>
-                <ul class="quadrant-list">
-                  {{q1_html}}
-                </ul>
+                <ul class="quadrant-list" id="q1_html"></ul>
               </div>
 
               <div class="quadrant q-orange">
@@ -228,9 +222,7 @@
                   </div>
                   HIGH IMPACT / STRATEGIC
                 </div>
-                <ul class="quadrant-list">
-                  {{q2_html}}
-                </ul>
+                <ul class="quadrant-list" id="q2_html"></ul>
               </div>
 
               <div class="quadrant q-blue">
@@ -240,9 +232,7 @@
                   </div>
                   LOW IMPACT / QUICK WINS
                 </div>
-                <ul class="quadrant-list">
-                  {{q3_html}}
-                </ul>
+                <ul class="quadrant-list" id="q3_html"></ul>
               </div>
 
               <div class="quadrant q-purple">
@@ -252,9 +242,7 @@
                   </div>
                   FUTURE GROWTH
                 </div>
-                <ul class="quadrant-list">
-                  {{q4_html}}
-                </ul>
+                <ul class="quadrant-list" id="q4_html"></ul>
               </div>
             </div>
           </div>
@@ -277,60 +265,50 @@
       <section class="main-grid-bottom">
         <div class="card card-border-green">
           <h2 class="card-title-muted">RECOMMENDED SPRINT</h2>
-          <div class="sprint-hero-title" data-field="sprint.name">{{sprint_name}}</div>
+          <div class="sprint-hero-title" data-field="sprint.name" id="sprint_name"></div>
           
           <div class="sprint-meta-pill">
             <span class="sprint-meta-label">SPRINT DURATION</span>
             <div class="sprint-meta-days">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <span data-field="sprint.duration">{{sprint_duration}}</span>
+              <span data-field="sprint.duration" id="sprint_duration"></span>
             </div>
           </div>
 
-          <p class="sprint-body-desc" data-field="sprint.description">
-            {{sprint_reason}}
-          </p>
+          <p class="sprint-body-desc" data-field="sprint.description" id="sprint_reason"></p>
 
           <button class="sprint-cta-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            START {{sprint_duration}} SPRINT. ACCELERATE GROWTH.
+            START <span id="sprint_duration_btn"></span> SPRINT. ACCELERATE GROWTH.
           </button>
         </div>
 
         <div class="card">
           <h2 class="card-title-muted">KEY TAKEAWAYS</h2>
           <div class="takeaways-stack">
-            <div class="takeaway-row" style="display: {{show_t0}};">
+            <div class="takeaway-row" id="takeaway_row_0" style="display: none;">
               <div class="takeaway-circle-icon icon-light-green text-green">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
               </div>
-              <div class="takeaway-content-text">
-                {{takeaway_0}}
-              </div>
+              <div class="takeaway-content-text" id="takeaway_0"></div>
             </div>
-            <div class="takeaway-row" style="display: {{show_t1}};">
+            <div class="takeaway-row" id="takeaway_row_1" style="display: none;">
               <div class="takeaway-circle-icon icon-light-green text-green">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
               </div>
-              <div class="takeaway-content-text">
-                {{takeaway_1}}
-              </div>
+              <div class="takeaway-content-text" id="takeaway_1"></div>
             </div>
-            <div class="takeaway-row" style="display: {{show_t2}};">
+            <div class="takeaway-row" id="takeaway_row_2" style="display: none;">
               <div class="takeaway-circle-icon icon-light-red text-red">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path></svg>
               </div>
-              <div class="takeaway-content-text">
-                {{takeaway_2}}
-              </div>
+              <div class="takeaway-content-text" id="takeaway_2"></div>
             </div>
-            <div class="takeaway-row" style="display: {{show_t3}};">
+            <div class="takeaway-row" id="takeaway_row_3" style="display: none;">
               <div class="takeaway-circle-icon icon-light-red text-red">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
               </div>
-              <div class="takeaway-content-text">
-                {{takeaway_3}}
-              </div>
+              <div class="takeaway-content-text" id="takeaway_3"></div>
             </div>
           </div>
         </div>
@@ -340,27 +318,19 @@
           <div id="roadmap-container" class="roadmap-steps-stack">
             <div class="roadmap-row-step">
               <div class="roadmap-badge-number">1</div>
-              <div class="roadmap-step-paragraph">
-                {{roadmap_w1}}
-              </div>
+              <div class="roadmap-step-paragraph" id="roadmap_w1"></div>
             </div>
             <div class="roadmap-row-step">
               <div class="roadmap-badge-number">2</div>
-              <div class="roadmap-step-paragraph">
-                {{roadmap_w2}}
-              </div>
+              <div class="roadmap-step-paragraph" id="roadmap_w2"></div>
             </div>
             <div class="roadmap-row-step">
               <div class="roadmap-badge-number">3</div>
-              <div class="roadmap-step-paragraph">
-                {{roadmap_w3}}
-              </div>
+              <div class="roadmap-step-paragraph" id="roadmap_w3"></div>
             </div>
             <div class="roadmap-row-step">
               <div class="roadmap-badge-number">4</div>
-              <div class="roadmap-step-paragraph">
-                {{roadmap_w4}}
-              </div>
+              <div class="roadmap-step-paragraph" id="roadmap_w4"></div>
             </div>
           </div>
         </div>
@@ -368,36 +338,36 @@
         <div class="card">
           <h2 class="card-title-muted">COMMERCIAL IMPACT SUMMARY</h2>
           <div class="impact-rows-stack">
-            <div class="impact-row-item" style="display: {{show_i0}};">
+            <div class="impact-row-item" id="impact_row_0" style="display: none;">
               <div class="impact-metric-icon text-green">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
               </div>
               <div>
-                <div class="impact-item-paragraph">{{impact_0}}</div>
+                <div class="impact-item-paragraph" id="impact_0"></div>
               </div>
             </div>
-            <div class="impact-row-item" style="display: {{show_i1}};">
+            <div class="impact-row-item" id="impact_row_1" style="display: none;">
               <div class="impact-metric-icon text-orange">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
               </div>
               <div>
-                <div class="impact-item-paragraph">{{impact_1}}</div>
+                <div class="impact-item-paragraph" id="impact_1"></div>
               </div>
             </div>
-            <div class="impact-row-item" style="display: {{show_i2}};">
+            <div class="impact-row-item" id="impact_row_2" style="display: none;">
               <div class="impact-metric-icon text-green">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
               </div>
               <div>
-                <div class="impact-item-paragraph">{{impact_2}}</div>
+                <div class="impact-item-paragraph" id="impact_2"></div>
               </div>
             </div>
-            <div class="impact-row-item" style="display: {{show_i3}};">
+            <div class="impact-row-item" id="impact_row_3" style="display: none;">
               <div class="impact-metric-icon text-orange">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               </div>
               <div>
-                <div class="impact-item-paragraph">{{impact_3}}</div>
+                <div class="impact-item-paragraph" id="impact_3"></div>
               </div>
             </div>
           </div>
@@ -409,23 +379,23 @@
         <div class="footer-pills-row">
           <div class="insight-pill">
             <svg class="pill-icon text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span class="pill-text">{{insight_0}}</span>
+            <span class="pill-text" id="insight_0"></span>
           </div>
           <div class="insight-pill">
             <svg class="pill-icon text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span class="pill-text">{{insight_1}}</span>
+            <span class="pill-text" id="insight_1"></span>
           </div>
           <div class="insight-pill">
             <svg class="pill-icon text-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
-            <span class="pill-text">{{insight_2}}</span>
+            <span class="pill-text" id="insight_2"></span>
           </div>
           <div class="insight-pill">
             <svg class="pill-icon text-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
-            <span class="pill-text">{{insight_3}}</span>
+            <span class="pill-text" id="insight_3"></span>
           </div>
           <div class="insight-pill">
             <svg class="pill-icon text-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
-            <span class="pill-text">{{insight_4}}</span>
+            <span class="pill-text" id="insight_4"></span>
           </div>
         </div>
       </footer>
