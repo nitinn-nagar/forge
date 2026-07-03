@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Forge Growth Opportunity Report</title>
+  <title>{{report.title}}</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,20 +16,20 @@
 
         <div class="sidebar-section">
           <div class="sidebar-label">ACCOUNT</div>
-          <div class="sidebar-value-primary" data-field="account.name">Sedgman Prudentia</div>
-          <div class="sidebar-value-secondary" data-field="account.industry_sub">Engineering Consulting</div>
+          <div class="sidebar-value-primary" data-field="account.name">{{company.name}}</div>
+          <div class="sidebar-value-secondary" data-field="account.industry_sub">{{company.industry}}</div>
         </div>
 
         <div class="sidebar-section">
           <div class="sidebar-label">DECISION MAKER</div>
-          <div class="sidebar-value-primary" data-field="decision_maker.name">Jason Hepburn</div>
-          <div class="sidebar-value-secondary" data-field="decision_maker.role">Managing Director</div>
+          <div class="sidebar-value-primary" data-field="decision_maker.name">{{decision_maker.name}}</div>
+          <div class="sidebar-value-secondary" data-field="decision_maker.role">{{decision_maker.role}}</div>
         </div>
 
         <div class="sidebar-section">
           <div class="sidebar-label">REPORT PURPOSE</div>
           <div class="sidebar-purpose-text" data-field="report.purpose">
-            Identify the highest commercial opportunities to accelerate revenue growth and improve marketing and sales efficiency.
+            {{executive_presentation.opening_summary}}
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
             <span class="opportunity-title">PRIMARY COMMERCIAL OPPORTUNITY</span>
           </div>
           <div class="opportunity-desc" data-field="report.primary_opportunity">
-            Convert more website visitors and LinkedIn engagement into qualified enquiries and client conversations.
+            {{growth_opportunity.primary_opportunity}}
           </div>
         </div>
       </div>
@@ -54,14 +54,14 @@
     <main class="main-content">
       <header class="main-header">
         <div class="header-left">
-          <h1 class="report-title" data-field="report.title">FORGE GROWTH OPPORTUNITY REPORT</h1>
-          <p class="report-subtitle" data-field="report.subtitle">Your personalised growth assessment and recommended next steps.</p>
+          <h1 class="report-title" data-field="report.title">{{report.title}}</h1>
+          <p class="report-subtitle" data-field="report.subtitle">{{report.subtitle}}</p>
         </div>
         <div class="header-right">
           <div class="date-label">REPORT DATE</div>
           <div class="date-value">
-            <span data-field="report.date">2 July 2026</span>
-            <span class="status-badge" data-field="report.status">(Updated)</span>
+            <span data-field="report.date">{{report.date}}</span>
+            <span class="status-badge" data-field="report.status">{{report.status}}</span>
           </div>
         </div>
       </header>
@@ -73,7 +73,7 @@
           </div>
           <div>
             <div class="meta-label">INDUSTRY</div>
-            <div class="meta-value" data-field="metadata.industry">Engineering Services</div>
+            <div class="meta-value" data-field="metadata.industry">{{company.industry}}</div>
           </div>
         </div>
         <div class="meta-item">
@@ -82,7 +82,7 @@
           </div>
           <div>
             <div class="meta-label">EMPLOYEES</div>
-            <div class="meta-value" data-field="metadata.employees">110+</div>
+            <div class="meta-value" data-field="metadata.employees">{{company.employees}}</div>
           </div>
         </div>
         <div class="meta-item">
@@ -91,7 +91,7 @@
           </div>
           <div>
             <div class="meta-label">ESTABLISHED</div>
-            <div class="meta-value" data-field="metadata.established">2014</div>
+            <div class="meta-value" data-field="metadata.established">{{company.established}}</div>
           </div>
         </div>
         <div class="meta-item">
@@ -100,7 +100,7 @@
           </div>
           <div>
             <div class="meta-label">CURRENCY</div>
-            <div class="meta-value" data-field="metadata.currency">AUD</div>
+            <div class="meta-value" data-field="metadata.currency">{{company.currency}}</div>
           </div>
         </div>
         <div class="meta-item">
@@ -109,7 +109,7 @@
           </div>
           <div>
             <div class="meta-label">COUNTRY</div>
-            <div class="meta-value" data-field="metadata.country">Australia</div>
+            <div class="meta-value" data-field="metadata.country">{{company.country}}</div>
           </div>
         </div>
       </section>
@@ -124,20 +124,20 @@
           <div class="gauge-box">
             <svg class="gauge-svg" viewBox="0 0 100 65">
               <path class="gauge-bg" d="M 15 60 A 35 35 0 0 1 85 60" fill="none" stroke="#f1f5f9" stroke-width="9" stroke-linecap="round"/>
-              <path class="gauge-fill" d="M 15 60 A 35 35 0 0 1 85 60" fill="none" stroke="#f59e0b" stroke-width="9" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="62"/>
+              <path class="gauge-fill" d="M 15 60 A 35 35 0 0 1 85 60" fill="none" stroke="#f59e0b" stroke-width="9" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="{{dashboard.stroke_dashoffset}}"/>
             </svg>
             <div class="gauge-text-center">
-              <span class="gauge-value" data-field="metrics.growth_score">47</span>
+              <span class="gauge-value" data-field="metrics.growth_score">{{dashboard.overall_score}}</span>
               <span class="gauge-max">/100</span>
             </div>
           </div>
 
-          <div class="score-label" data-field="metrics.growth_score_label">Significant Commercial Growth Opportunity Identified</div>
+          <div class="score-label" data-field="metrics.growth_score_label">{{dashboard.verdict}}</div>
           
           <div class="score-alert">
             <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
             <div class="alert-text" data-field="metrics.growth_score_desc">
-              <strong>Strong engineering business with solid fundamentals,</strong> but commercial growth engine is underdeveloped.
+              {{dashboard.summary}}
             </div>
           </div>
 
@@ -157,32 +157,32 @@
             <div class="law-item">
               <div class="law-icon-wrapper text-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 3v18M3 12h18"></path></svg></div>
               <div class="law-name">Offer</div>
-              <div class="law-bar-container"><div class="law-bar bg-green" style="width: 91%;"></div></div>
-              <div class="law-score"><strong>91</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-green" style="width: {{five_laws.offer.score}}%;"></div></div>
+              <div class="law-score"><strong>{{five_laws.offer.score}}</strong><span class="scale-max">/100</span></div>
             </div>
             <div class="law-item">
               <div class="law-icon-wrapper text-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2.3-1.2-4.4-3-5.7V7a4 4 0 0 0-8 0v2.3C6.2 10.6 5 12.7 5 15a7 7 0 0 0 7 7z"></path></svg></div>
               <div class="law-name">Creative</div>
-              <div class="law-bar-container"><div class="law-bar bg-orange" style="width: 46%;"></div></div>
-              <div class="law-score"><strong>46</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-orange" style="width: {{five_laws.creative.score}}%;"></div></div>
+              <div class="law-score"><strong>{{five_laws.creative.score}}</strong><span class="scale-max">/100</span></div>
             </div>
             <div class="law-item">
               <div class="law-icon-wrapper text-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
               <div class="law-name">Brand</div>
-              <div class="law-bar-container"><div class="law-bar bg-orange" style="width: 56%;"></div></div>
-              <div class="law-score"><strong>56</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-orange" style="width: {{five_laws.brand.score}}%;"></div></div>
+              <div class="law-score"><strong>{{five_laws.brand.score}}</strong><span class="scale-max">/100</span></div>
             </div>
             <div class="law-item">
               <div class="law-icon-wrapper text-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path></svg></div>
               <div class="law-name">Conversion</div>
-              <div class="law-bar-container"><div class="law-bar bg-red" style="width: 24%;"></div></div>
-              <div class="law-score"><strong>24</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-red" style="width: {{five_laws.conversion.score}}%;"></div></div>
+              <div class="law-score"><strong>{{five_laws.conversion.score}}</strong><span class="scale-max">/100</span></div>
             </div>
             <div class="law-item">
               <div class="law-icon-wrapper text-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
               <div class="law-name">Measurement</div>
-              <div class="law-bar-container"><div class="law-bar bg-red" style="width: 18%;"></div></div>
-              <div class="law-score"><strong>18</strong><span class="scale-max">/100</span></div>
+              <div class="law-bar-container"><div class="law-bar bg-red" style="width: {{five_laws.measurement.score}}%;"></div></div>
+              <div class="law-score"><strong>{{five_laws.measurement.score}}</strong><span class="scale-max">/100</span></div>
             </div>
           </div>
 
@@ -217,10 +217,7 @@
                   HIGH IMPACT / QUICK WINS
                 </div>
                 <ul class="quadrant-list">
-                  <li>Improve executive enquiry journey</li>
-                  <li>Strengthen CTAs & contact pathways</li>
-                  <li>Capability statement / landing page</li>
-                  <li>Enhance project proof & case studies</li>
+                  {{matrix.quadrant_1_items}}
                 </ul>
               </div>
 
@@ -232,10 +229,7 @@
                   HIGH IMPACT / STRATEGIC
                 </div>
                 <ul class="quadrant-list">
-                  <li>Conversion optimisation program</li>
-                  <li>CRM integration & lead qualification</li>
-                  <li>Conversion tracking & attribution</li>
-                  <li>Lead nurture & automation</li>
+                  {{matrix.quadrant_2_items}}
                 </ul>
               </div>
 
@@ -247,10 +241,7 @@
                   LOW IMPACT / QUICK WINS
                 </div>
                 <ul class="quadrant-list">
-                  <li>Website content refresh</li>
-                  <li>Technical SEO improvements</li>
-                  <li>FAQ enhancement</li>
-                  <li>Contact page optimisation</li>
+                  {{matrix.quadrant_3_items}}
                 </ul>
               </div>
 
@@ -262,10 +253,7 @@
                   FUTURE GROWTH
                 </div>
                 <ul class="quadrant-list">
-                  <li>Executive thought leadership</li>
-                  <li>Industry webinars & events</li>
-                  <li>Resource centre & guides</li>
-                  <li>AI-assisted enquiry qualification</li>
+                  {{matrix.quadrant_4_items}}
                 </ul>
               </div>
             </div>
@@ -289,23 +277,23 @@
       <section class="main-grid-bottom">
         <div class="card card-border-green">
           <h2 class="card-title-muted">RECOMMENDED SPRINT</h2>
-          <div class="sprint-hero-title" data-field="sprint.name">Commercial Growth Engine Sprint</div>
+          <div class="sprint-hero-title" data-field="sprint.name">{{recommended_sprint.name}}</div>
           
           <div class="sprint-meta-pill">
             <span class="sprint-meta-label">SPRINT DURATION</span>
             <div class="sprint-meta-days">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <span data-field="sprint.duration">30 DAYS</span>
+              <span data-field="sprint.duration">{{recommended_sprint.duration}}</span>
             </div>
           </div>
 
           <p class="sprint-body-desc" data-field="sprint.description">
-            Build a structured enquiry journey, improve conversion, implement measurement and create a predictable flow of qualified engineering opportunities.
+            {{recommended_sprint.reason}}
           </p>
 
           <button class="sprint-cta-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            START 30-DAY SPRINT. ACCELERATE GROWTH.
+            START {{recommended_sprint.duration}} SPRINT. ACCELERATE GROWTH.
           </button>
         </div>
 
@@ -317,8 +305,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
               </div>
               <div class="takeaway-content-text">
-                <span class="takeaway-bold-header">Strong engineering capability & reputation</span>
-                Clear positioning, multi-discipline expertise and credible project delivery.
+                {{growth_opportunity.key_takeaways.0}}
               </div>
             </div>
             <div class="takeaway-row">
@@ -326,8 +313,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
               </div>
               <div class="takeaway-content-text">
-                <span class="takeaway-bold-header">Offer is a key strength</span>
-                Well-defined services across the full project life cycle with sector expertise.
+                {{growth_opportunity.key_takeaways.1}}
               </div>
             </div>
             <div class="takeaway-row">
@@ -335,8 +321,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path></svg>
               </div>
               <div class="takeaway-content-text">
-                <span class="takeaway-bold-header">Conversion is the biggest gap</span>
-                Limited evidence of landing pages, lead magnets, qualification flows or nurture journeys.
+                {{growth_opportunity.key_takeaways.2}}
               </div>
             </div>
             <div class="takeaway-row">
@@ -344,8 +329,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
               </div>
               <div class="takeaway-content-text">
-                <span class="takeaway-bold-header">Measurement is a blind spot</span>
-                No visible tracking, attribution or performance reporting to drive decisions.
+                {{growth_opportunity.key_takeaways.3}}
               </div>
             </div>
           </div>
@@ -357,29 +341,29 @@
             <div class="roadmap-row-step">
               <div class="roadmap-badge-number">1</div>
               <div>
-                <div class="roadmap-step-headline">Week 1: Commercial Funnel Audit</div>
-                <div class="roadmap-step-paragraph">Audit website, LinkedIn flow, service pages, enquiry journey and conversion friction.</div>
+                <div class="roadmap-step-headline">Week 1</div>
+                <div class="roadmap-step-paragraph">{{roadmap_30_days.week_1}}</div>
               </div>
             </div>
             <div class="roadmap-row-step">
               <div class="roadmap-badge-number">2</div>
               <div>
-                <div class="roadmap-step-headline">Week 2: Conversion Asset Build</div>
-                <div class="roadmap-step-paragraph">Build/optimise landing page, CTAs, capability statement and enquiry workflow.</div>
+                <div class="roadmap-step-headline">Week 2</div>
+                <div class="roadmap-step-paragraph">{{roadmap_30_days.week_2}}</div>
               </div>
             </div>
             <div class="roadmap-row-step">
               <div class="roadmap-badge-number">3</div>
               <div>
-                <div class="roadmap-step-headline">Week 3: Measurement Foundation</div>
-                <div class="roadmap-step-paragraph">Implement conversion tracking, lead source tagging and basic reporting.</div>
+                <div class="roadmap-step-headline">Week 3</div>
+                <div class="roadmap-step-paragraph">{{roadmap_30_days.week_3}}</div>
               </div>
             </div>
             <div class="roadmap-row-step">
               <div class="roadmap-badge-number">4</div>
               <div>
-                <div class="roadmap-step-headline">Week 4: Optimise & Handover</div>
-                <div class="roadmap-step-paragraph">Review early results, refine messaging and prepare scale recommendations.</div>
+                <div class="roadmap-step-headline">Week 4</div>
+                <div class="roadmap-step-paragraph">{{roadmap_30_days.week_4}}</div>
               </div>
             </div>
           </div>
@@ -393,8 +377,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
               </div>
               <div>
-                <div class="impact-item-headline">Increase Qualified Enquiries</div>
-                <div class="impact-item-paragraph">More high-value enquiries from the right clients and sectors.</div>
+                <div class="impact-item-paragraph">{{growth_opportunity.commercial_impact.0}}</div>
               </div>
             </div>
             <div class="impact-row-item">
@@ -402,8 +385,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
               </div>
               <div>
-                <div class="impact-item-headline">Build a Predictable Pipeline</div>
-                <div class="impact-item-paragraph">Reduce reliance on referrals with a structured commercial engine.</div>
+                <div class="impact-item-paragraph">{{growth_opportunity.commercial_impact.1}}</div>
               </div>
             </div>
             <div class="impact-row-item">
@@ -411,8 +393,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
               </div>
               <div>
-                <div class="impact-item-headline">Win More High-Value Projects</div>
-                <div class="impact-item-paragraph">Better qualified opportunities lead to higher win rates and project value.</div>
+                <div class="impact-item-paragraph">{{growth_opportunity.commercial_impact.2}}</div>
               </div>
             </div>
             <div class="impact-row-item">
@@ -420,8 +401,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               </div>
               <div>
-                <div class="impact-item-headline">Improve Marketing ROI</div>
-                <div class="impact-item-paragraph">Measure what works, optimise spend and invest with confidence.</div>
+                <div class="impact-item-paragraph">{{growth_opportunity.commercial_impact.3}}</div>
               </div>
             </div>
           </div>
@@ -433,23 +413,23 @@
         <div class="footer-pills-row">
           <div class="insight-pill">
             <svg class="pill-icon text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span class="pill-text">Strong technical positioning and comprehensive service offering.</span>
+            <span class="pill-text">{{growth_opportunity.quick_insights.0}}</span>
           </div>
           <div class="insight-pill">
             <svg class="pill-icon text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span class="pill-text">Professional website and consistent LinkedIn presence establish credibility.</span>
+            <span class="pill-text">{{growth_opportunity.quick_insights.1}}</span>
           </div>
           <div class="insight-pill">
             <svg class="pill-icon text-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
-            <span class="pill-text">Limited conversion pathways and lead capture mechanisms on the website.</span>
+            <span class="pill-text">{{growth_opportunity.quick_insights.2}}</span>
           </div>
           <div class="insight-pill">
             <svg class="pill-icon text-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
-            <span class="pill-text">No clear lead nurturing or enquiry qualification process.</span>
+            <span class="pill-text">{{growth_opportunity.quick_insights.3}}</span>
           </div>
           <div class="insight-pill">
             <svg class="pill-icon text-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
-            <span class="pill-text">Limited analytics and measurement of marketing and website performance.</span>
+            <span class="pill-text">{{growth_opportunity.quick_insights.4}}</span>
           </div>
         </div>
       </footer>
