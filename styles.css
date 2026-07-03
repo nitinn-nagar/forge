@@ -841,10 +841,6 @@ body {
   line-height: 1.3;
   color: #475569;
   font-weight: 500;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; 
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* SHARED ATOMIC COLOR SCHEMES */
