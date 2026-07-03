@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #e2e8f0; /* Darker background for preview contrast */
+  background-color: #e2e8f0; 
   color: #0f172a;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
@@ -31,14 +31,14 @@ body {
   display: flex;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Only visible on screen */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 /* LEFT BRAND SIDEBAR TRACKS */
 .sidebar {
   width: 65mm;
   height: 100%;
-  background-color: #0b1224; /* Matched to target design */
+  background-color: #0b1224; 
   color: #ffffff;
   padding: 8mm 6mm;
   display: flex;
@@ -56,7 +56,6 @@ body {
   letter-spacing: -0.5px;
 }
 
-/* To simulate the gold 'E' from target image without HTML changes, we use the sub-brand color */
 .logo-sub {
   font-size: 9px;
   font-weight: 700;
@@ -73,7 +72,7 @@ body {
 .sidebar-label {
   font-size: 9px;
   font-weight: 800;
-  color: #eab308; /* Gold accent */
+  color: #eab308; 
   letter-spacing: 0.5px;
   margin-bottom: 1.5mm;
   text-transform: uppercase;
@@ -99,7 +98,6 @@ body {
   color: #e2e8f0;
 }
 
-/* Bottom Sidebar Opportunity Box - No borders, just icon and text */
 .sidebar-bottom {
   margin-top: auto;
 }
@@ -147,14 +145,14 @@ body {
   background-color: #ffffff;
 }
 
-/* TOP HEADER BLOCK */
+/* TOP HEADER BLOCK - TIGHTENED */
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 4mm;
-  margin-bottom: 4mm;
+  padding-bottom: 3mm;
+  margin-bottom: 3mm;
   flex-shrink: 0;
 }
 
@@ -206,15 +204,15 @@ body {
   font-weight: 700;
 }
 
-/* METADATA RIBBON TRACKS - No borders, just vertical dividers */
+/* METADATA RIBBON TRACKS - TIGHTENED */
 .metadata-ribbon {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 4mm;
-  margin-bottom: 4mm;
+  padding-bottom: 3mm;
+  margin-bottom: 3mm;
   flex-shrink: 0;
 }
 
@@ -232,7 +230,7 @@ body {
 .meta-icon-wrapper {
   width: 22px;
   height: 22px;
-  color: #16a34a; /* Target design uses green icons */
+  color: #16a34a; 
   display: flex;
   align-items: center;
 }
@@ -257,7 +255,7 @@ body {
   margin-top: 0.5mm;
 }
 
-/* CARD ARCHITECTURE DEFINITIONS - Removed visible borders */
+/* CARD ARCHITECTURE DEFINITIONS */
 .card {
   background: transparent;
   border: none;
@@ -273,7 +271,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1.5mm;
-  margin-bottom: 3mm;
+  margin-bottom: 2mm;
   justify-content: flex-start;
 }
 
@@ -289,7 +287,7 @@ body {
   font-weight: 800;
   color: #0f172a;
   text-transform: uppercase;
-  margin-bottom: 3mm;
+  margin-bottom: 2mm;
 }
 
 .info-icon {
@@ -303,13 +301,13 @@ body {
   display: grid;
   grid-template-columns: 1fr 1.1fr 1.6fr;
   gap: 4mm;
-  margin-bottom: 3mm;
-  padding-bottom: 3mm;
+  margin-bottom: 2.5mm;
+  padding-bottom: 2.5mm;
   border-bottom: 1px solid #e2e8f0;
   
-  /* Strict partition firewall */
-  flex: 0 0 85mm; 
-  max-height: 85mm;
+  /* Firewall expanded slightly to fix score guide clipping */
+  flex: 0 0 88mm; 
+  max-height: 88mm;
   overflow: hidden; 
 }
 
@@ -328,7 +326,7 @@ body {
   position: relative;
   width: 48mm;
   height: 28mm;
-  margin: 2mm auto 4mm auto;
+  margin: 1mm auto 2mm auto; /* Tightened margins */
 }
 
 .gauge-svg {
@@ -344,7 +342,7 @@ body {
 
 .gauge-fill {
   stroke-width: 12;
-  stroke: #f59e0b; /* Overridden by JS */
+  stroke: #f59e0b; 
 }
 
 .gauge-text-center {
@@ -376,7 +374,7 @@ body {
   color: #ea580c;
   text-align: center;
   line-height: 1.3;
-  margin-bottom: 3mm;
+  margin-bottom: 2mm;
 }
 
 .score-alert {
@@ -398,7 +396,7 @@ body {
 .alert-text {
   font-size: 9.5px;
   color: #b91c1c;
-  line-height: 1.4;
+  line-height: 1.3;
   font-weight: 500;
 }
 
@@ -416,7 +414,7 @@ body {
   font-size: 8px;
   font-weight: 800;
   color: #64748b;
-  margin-bottom: 3mm;
+  margin-bottom: 2mm;
   text-transform: uppercase;
 }
 
@@ -539,7 +537,6 @@ body {
   gap: 4mm;
 }
 
-/* Target design removes quadrant backgrounds completely */
 .quadrant {
   background-color: transparent !important;
   border: none !important;
@@ -579,16 +576,16 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1mm; /* Reduced for denser fit */
+  gap: 1mm; 
 }
 
 .quadrant-list li {
-  font-size: 8.5px; /* Reduced for denser fit */
+  font-size: 8.5px; 
   font-weight: 500;
   color: #334155;
   position: relative;
   padding-left: 2.5mm;
-  line-height: 1.2; /* Tightened leading */
+  line-height: 1.2; 
 }
 
 .quadrant-list li::before {
@@ -644,11 +641,9 @@ body {
   display: grid;
   grid-template-columns: 1.1fr 1fr 1.2fr 1.1fr; 
   gap: 4mm;
-  
-  /* Flexbox space-filling partition */
   flex: 1; 
   min-height: 0; 
-  margin-bottom: 3mm;
+  margin-bottom: 2mm; /* Tightened */
   overflow: hidden;
 }
 
@@ -668,7 +663,7 @@ body {
   font-weight: 800;
   color: #16a34a;
   line-height: 1.25;
-  margin-bottom: 4mm;
+  margin-bottom: 2mm; /* Tightened */
 }
 
 .sprint-meta-pill {
@@ -676,7 +671,7 @@ body {
   border: 1px dashed #cbd5e1;
   border-radius: 4px;
   padding: 2.5mm;
-  margin-bottom: 4mm;
+  margin-bottom: 2mm; /* Tightened */
   display: flex;
   align-items: center;
   gap: 2mm;
@@ -706,9 +701,9 @@ body {
 
 .sprint-body-desc {
   font-size: 10px;
-  line-height: 1.4;
+  line-height: 1.3;
   color: #334155;
-  margin-bottom: 4mm;
+  margin-bottom: 2mm; /* Tightened */
 }
 
 .sprint-cta-btn {
@@ -736,7 +731,7 @@ body {
 .takeaways-stack, .roadmap-steps-stack, .impact-rows-stack {
   display: flex;
   flex-direction: column;
-  gap: 2mm; /* Tightened from 3mm */
+  gap: 1.5mm; /* Tightened to prevent slice off at the bottom */
 }
 
 .takeaway-row, .roadmap-row-step, .impact-row-item {
@@ -745,7 +740,6 @@ body {
   align-items: flex-start;
 }
 
-/* Styled to match the hollow circular icons of target image */
 .takeaway-circle-icon {
   width: 22px;
   height: 22px;
@@ -786,10 +780,9 @@ body {
 
 .impact-metric-icon svg { width: 16px; height: 16px; color: #16a34a; }
 
-/* Truncation removed, tight typography applied */
 .takeaway-content-text, .roadmap-step-paragraph, .impact-item-paragraph {
   font-size: 8.5px;
-  line-height: 1.25;
+  line-height: 1.2; /* Tightened leading for density */
   color: #334155;
 }
 
@@ -802,8 +795,6 @@ body {
   display: flex;
   align-items: center;
   gap: 4mm;
-  
-  /* Footer anchor */
   flex-shrink: 0;
   height: 15mm; 
 }
