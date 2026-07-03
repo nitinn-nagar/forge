@@ -1,0 +1,847 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* GLOBAL RESETS DESIGNED FOR HIGH-DENSITY SHEET PRESENTATION */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ABSOLUTE RIGID A4 ENVELOPE - COMPLETELY PREVENTS OVERLAPPING/STACKING REGRESSIONS */
+.dashboard-container {
+  width: 297mm;
+  height: 210mm;
+  max-width: 297mm;
+  max-height: 210mm;
+  min-width: 297mm;
+  min-height: 210mm;
+  background-color: #fafbfc;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* LEFT BRAND SIDEBAR TRACKS */
+.sidebar {
+  width: 55mm;
+  height: 210mm;
+  max-height: 210mm;
+  background-color: #0b1224;
+  color: #ffffff;
+  padding: 7mm 5mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.logo-container {
+  margin-bottom: 8mm;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.logo-sub {
+  font-size: 8px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.8px;
+  margin-top: -2px;
+}
+
+.sidebar-section {
+  margin-bottom: 6mm;
+}
+
+.sidebar-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #eab308;
+  letter-spacing: 0.5px;
+  margin-bottom: 1mm;
+}
+
+.sidebar-value-primary {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.sidebar-value-secondary {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 400;
+  margin-top: 0.5mm;
+}
+
+.sidebar-purpose-text {
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: #cbd5e1;
+}
+
+.opportunity-box {
+  border: 1px solid #273549;
+  border-radius: 6px;
+  padding: 3.5mm;
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+.opportunity-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5mm;
+  margin-bottom: 1.5mm;
+}
+
+.opportunity-icon {
+  width: 14px;
+  height: 14px;
+  color: #eab308;
+}
+
+.opportunity-title {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #eab308;
+  letter-spacing: 0.2px;
+}
+
+.opportunity-desc {
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: #e2e8f0;
+}
+
+/* MAIN DASHBOARD CANVAS RUNTIME SPECIFICATION */
+.main-content {
+  width: 242mm;
+  height: 210mm;
+  max-height: 210mm;
+  padding: 6mm 6mm 5mm 6mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+/* TOP HEADER BLOCK */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 10mm;
+}
+
+.report-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.2px;
+}
+
+.report-subtitle {
+  font-size: 11.5px;
+  color: #475569;
+}
+
+.date-label {
+  font-size: 8px;
+  font-weight: 700;
+  color: #64748b;
+  text-align: right;
+  letter-spacing: 0.5px;
+}
+
+.date-value {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 1mm;
+}
+
+.status-badge {
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* METADATA RIBBON TRACKS */
+.metadata-ribbon {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 2mm 4mm;
+  height: 11mm;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 2.5mm;
+}
+
+.meta-icon-wrapper {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.meta-icon-wrapper svg {
+  width: 100%;
+  height: 100%;
+}
+
+.meta-label {
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.3px;
+}
+
+.meta-value {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: -0.2mm;
+}
+
+/* CARD ARCHITECTURE DEFINITIONS */
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 3.5mm 4mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2mm;
+  height: 4mm;
+}
+
+.card-title {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: 0.3px;
+}
+
+.info-icon {
+  width: 12px;
+  height: 12px;
+  color: #94a3b8;
+}
+
+/* ROW 1 TRACKS (GRID-TOP RATIOS) */
+.main-grid-top {
+  display: grid;
+  grid-template-columns: 57mm 60mm 105mm;
+  gap: 4mm;
+  height: 79mm;
+}
+
+/* SCORE CELL */
+.gauge-box {
+  position: relative;
+  width: 32mm;
+  height: 20mm;
+  margin: 1mm auto 2mm auto;
+}
+
+.gauge-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.gauge-text-center {
+  position: absolute;
+  bottom: 0mm;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: baseline;
+}
+
+.gauge-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.gauge-max {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.score-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ea580c;
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 2mm;
+}
+
+.score-alert {
+  background-color: #fff5f5;
+  border: 1px solid #fee2e2;
+  border-radius: 4px;
+  padding: 2mm 2.5mm;
+  display: flex;
+  gap: 2mm;
+}
+
+.alert-icon {
+  width: 13px;
+  height: 13px;
+  color: #ef4444;
+  flex-shrink: 0;
+  margin-top: 0.5px;
+}
+
+.alert-text {
+  font-size: 9.5px;
+  color: #991b1b;
+  line-height: 1.35;
+}
+
+.score-guide {
+  margin-top: auto;
+  font-size: 8px;
+  color: #64748b;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* THE FIVE GROWTH LAWS ELEMENTS */
+.law-subtitle {
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 1.5mm;
+}
+
+.five-laws-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8mm;
+}
+
+.law-item {
+  display: flex;
+  align-items: center;
+  height: 5mm;
+}
+
+.law-icon-wrapper {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2mm;
+}
+
+.law-icon-wrapper svg {
+  width: 100%;
+  height: 100%;
+}
+
+.law-name {
+  width: 18mm;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.law-bar-container {
+  flex-grow: 1;
+  height: 5px;
+  background-color: #f1f5f9;
+  border-radius: 10px;
+  margin-right: 2.5mm;
+  overflow: hidden;
+}
+
+.law-bar {
+  height: 100%;
+  border-radius: 10px;
+}
+
+.law-score {
+  font-size: 10px;
+  text-align: right;
+  width: 9mm;
+  color: #0f172a;
+}
+
+.laws-legend {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.leg-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5mm;
+  vertical-align: middle;
+}
+
+/* PRIORITY MATRIX COORDINATE TRACKS */
+.matrix-container-box {
+  display: flex;
+  position: relative;
+  height: 54mm;
+  margin-top: 1mm;
+}
+
+.matrix-y-axis {
+  display: flex;
+  width: 7mm;
+  position: relative;
+}
+
+.y-axis-text {
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #64748b;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  position: absolute;
+  width: 40mm;
+  left: -17mm;
+  top: 25mm;
+  text-align: center;
+}
+
+.y-axis-indicators {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #64748b;
+  width: 100%;
+  text-align: right;
+  padding-right: 1.5mm;
+}
+
+.matrix-core-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5mm;
+}
+
+.quadrant {
+  border-radius: 4px;
+  padding: 2mm 2.5mm;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.q-green { background-color: #f0fdf4; border: 1px solid #bbf7d0; }
+.q-orange { background-color: #fffbeb; border: 1px solid #fef3c7; }
+.q-blue { background-color: #eff6ff; border: 1px solid #dbeafe; }
+.q-purple { background-color: #faf5ff; border: 1px solid #f3e8ff; }
+
+.quadrant-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5mm;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  margin-bottom: 1.5mm;
+}
+
+.quadrant-badge {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5px;
+}
+
+.quadrant-badge svg {
+  width: 100%;
+  height: 100%;
+}
+
+.header-green { color: #166534; }
+.header-orange { color: #9a3412; }
+.header-blue { color: #1e40af; }
+.header-purple { color: #6b21a8; }
+
+.quadrant-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8mm;
+}
+
+.quadrant-list li {
+  font-size: 9px;
+  font-weight: 500;
+  color: #334155;
+  position: relative;
+  padding-left: 2mm;
+  line-height: 1.2;
+}
+
+.quadrant-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.matrix-axis-bottom {
+  margin-top: 1mm;
+  padding-left: 7mm;
+}
+
+.x-axis-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 1.5mm;
+}
+
+.x-title {
+  font-size: 7.5px;
+  font-weight: 700;
+}
+
+.matrix-labels-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4mm;
+  font-size: 8px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.leg-box {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 1px;
+  margin-right: 0.5mm;
+  vertical-align: middle;
+}
+
+/* ROW 2 TRACKS (GRID-BOTTOM MULTI-COLUMN RATIOS) */
+.main-grid-bottom {
+  display: grid;
+  grid-template-columns: 54mm 54mm 58mm 58mm;
+  gap: 4mm;
+  height: 73mm;
+}
+
+.card-title-muted {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  margin-bottom: 2mm;
+  height: 3mm;
+}
+
+/* RECOMMENDED SPRINT CELL STRUCTURE */
+.card-border-green {
+  border-color: #bbf7d0;
+}
+
+.sprint-hero-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #16a34a;
+  line-height: 1.25;
+  margin-bottom: 2.5mm;
+}
+
+.sprint-meta-pill {
+  background-color: #f0fdf4;
+  border-radius: 4px;
+  padding: 1.5mm 2mm;
+  margin-bottom: 2.5mm;
+}
+
+.sprint-meta-label {
+  font-size: 7px;
+  font-weight: 700;
+  color: #15803d;
+  display: block;
+}
+
+.sprint-meta-days {
+  display: flex;
+  align-items: center;
+  gap: 1mm;
+  font-size: 12px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 0.2mm;
+}
+
+.sprint-meta-days svg {
+  width: 12px;
+  height: 12px;
+  color: #16a34a;
+}
+
+.sprint-body-desc {
+  font-size: 9.5px;
+  line-height: 1.35;
+  color: #475569;
+}
+
+.sprint-cta-btn {
+  margin-top: auto;
+  background-color: #047857;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 2.5mm;
+  font-size: 8.5px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1mm;
+}
+
+.sprint-cta-btn svg {
+  width: 8px;
+  height: 8px;
+}
+
+/* TAKEAWAYS VERTICAL CONSTRAINTS */
+.takeaways-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+.takeaway-row {
+  display: flex;
+  gap: 2mm;
+  align-items: flex-start;
+}
+
+.takeaway-circle-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 2.5px;
+  margin-top: 0.5px;
+}
+
+.takeaway-circle-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-light-green { background-color: #f0fdf4; }
+.icon-light-red { background-color: #fff5f5; }
+
+.takeaway-content-text {
+  font-size: 9.5px;
+  line-height: 1.3;
+  color: #334155;
+}
+
+.takeaway-bold-header {
+  color: #0f172a;
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.2mm;
+}
+
+/* ROADMAP STACK CONSTRAINT CODES */
+.roadmap-steps-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+.roadmap-row-step {
+  display: flex;
+  gap: 2.5mm;
+  align-items: flex-start;
+}
+
+.roadmap-badge-number {
+  background-color: #0f172a;
+  color: #ffffff;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.5px;
+}
+
+.roadmap-step-headline {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.2mm;
+}
+
+.roadmap-step-paragraph {
+  font-size: 9px;
+  line-height: 1.3;
+  color: #475569;
+}
+
+/* COMMERCIAL IMPACT CELLS */
+.impact-rows-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+.impact-row-item {
+  display: flex;
+  gap: 2.5mm;
+  align-items: flex-start;
+}
+
+.impact-metric-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5px;
+}
+
+.impact-metric-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.impact-item-headline {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.2mm;
+}
+
+.impact-item-paragraph {
+  font-size: 9px;
+  line-height: 1.25;
+  color: #475569;
+}
+
+/* QUICK INSIGHT FOOTER BAR */
+.quick-insights-footer {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 2mm 4mm;
+  height: 15mm;
+}
+
+.footer-title {
+  font-size: 8px;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5mm;
+}
+
+.footer-pills-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4mm;
+}
+
+.insight-pill {
+  display: flex;
+  gap: 1.5mm;
+  align-items: flex-start;
+}
+
+.pill-icon {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  margin-top: 0.5px;
+}
+
+.pill-text {
+  font-size: 8.5px;
+  line-height: 1.3;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* SHARED ATOMIC COLOR SCHEMES */
+.bg-green { background-color: #16a34a; }
+.bg-orange { background-color: #f59e0b; }
+.bg-red { background-color: #ef4444; }
+.bg-blue { background-color: #2563eb; }
+.bg-purple { background-color: #7c3aed; }
+
+.text-green { color: #16a34a; }
+.text-orange { color: #ea580c; }
+.text-red { color: #dc2626; }
+
+/* REINFORCE PRINT HARD ENGINE CUTOFFS */
+@media print {
+  body {
+    background-color: #ffffff;
+  }
+  .dashboard-container {
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+}
