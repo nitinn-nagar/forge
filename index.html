@@ -3,287 +3,346 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page_title">Forge Growth Opportunity Report</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title id="page_title">Growth Opportunity Report</title>
+  <style>
+    :root {
+      --navy: #061827;
+      --deep: #07111f;
+      --green: #0b6830;
+      --green-soft: #eaf5ee;
+      --orange: #f4a000;
+      --orange2: #ff4b18;
+      --red: #ef2d18;
+      --blue: #0b63ce;
+      --purple: #6a35a8;
+      --ink: #07102c;
+      --muted: #657089;
+      --line: #dfe5ee;
+      --card: #ffffff;
+    }
+    
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      background: #e9eef5;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    
+    /* Strict A4 Landscape Enforcement */
+    .report-page {
+      width: 1122px;
+      height: 793px;
+      margin: 0 auto;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 195px 1fr;
+      box-shadow: 0 0 18px rgba(0,0,0,.12);
+      overflow: hidden;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      background: linear-gradient(180deg, #06182a, #06111f);
+      color: #fff;
+      padding: 20px 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .logo-text { font-size: 34px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+    .logo-text span { color: var(--orange); }
+    .tagline { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-top: 4px; margin-bottom: 24px; color: #fff;}
+    
+    .side-block, .sidebar-section { border-top: 1px solid rgba(255,255,255,.25); padding: 16px 0; }
+    .side-label { color: #ffce00; font-weight: 900; font-size: 10px; margin-bottom: 8px; }
+    .sidebar h2 { font-size: 15px; margin: 0 0 4px; font-weight: 700; }
+    .sidebar p { font-size: 11px; line-height: 1.5; margin: 0; color: #d0d6e0; }
+    
+    .primary-opportunity {
+      position: absolute; left: 14px; right: 14px; bottom: 20px;
+      border: 1px solid rgba(255,206,0,.55);
+      border-radius: 8px; padding: 14px 12px;
+    }
+    .target-icon { width: 24px; height: 24px; color: #ffce00; margin-bottom: 6px; }
+    .primary-opportunity p { font-size: 10.5px; line-height: 1.45; }
+    
+    /* Main Content */
+    .content { padding: 16px 20px 16px 20px; display: flex; flex-direction: column; height: 793px; }
+    
+    .top-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .top-header h1 { font-size: 28px; line-height: 1; margin: 0 0 4px; font-weight: 900; letter-spacing: -0.5px; }
+    .top-header p { font-size: 14px; margin: 0; color: #586179; }
+    
+    .report-date { text-align: right; font-size: 10px; color: #586179; text-transform: uppercase; font-weight: 700; }
+    .report-date strong { display: block; color: #111; font-size: 12px; margin: 4px 0; }
+    .report-date em { color: var(--green); font-style: normal; font-weight: 800; }
+    
+    /* Profile Strip */
+    .profile-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 10px; }
+    .profile-card { border: 1px solid var(--line); border-radius: 6px; padding: 10px 10px 10px 48px; position: relative; min-height: 52px; display: flex; flex-direction: column; justify-content: center; }
+    .profile-card .icon { position: absolute; left: 10px; top: 10px; width: 30px; height: 30px; border-radius: 50%; background: var(--green-soft); color: var(--green); display: grid; place-items: center; }
+    .profile-card .icon svg { width: 16px; height: 16px; }
+    .profile-card span { display: block; font-size: 8px; font-weight: 800; letter-spacing: .5px; color: var(--muted); text-transform: uppercase; }
+    .profile-card strong { font-size: 12.5px; display: block; margin-top: 2px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    
+    /* Grid Main */
+    .grid-main { display: grid; grid-template-columns: 1fr 1.15fr 1.35fr; gap: 10px; margin-bottom: 10px; }
+    
+    .card { border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 12px 14px; display: flex; flex-direction: column;}
+    .card h3 { margin: 0 0 10px; font-size: 10.5px; font-weight: 900; text-transform: uppercase; display: flex; align-items: center; gap: 6px;}
+    .card h3 small { font-size: 12px; font-weight: 400; color: #8893a8; cursor: help; }
+    .card h2 { margin: 0 0 6px; color: var(--green); font-size: 15px; line-height: 1.2; font-weight: 800; }
+    .card p { font-size: 10px; line-height: 1.48; margin: 0; color: #31405b; }
+    
+    /* Score Card & SVG Gauge */
+    .score-card { text-align: center; height: 275px; justify-content: space-between; }
+    .svg-gauge-container { position: relative; width: 150px; margin: 6px auto 0; text-align: center; }
+    .gauge-svg { width: 100%; height: auto; overflow: visible; }
+    .gauge-value { position: absolute; top: 38px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; }
+    .gauge-value strong { font-size: 46px; font-weight: 900; color: var(--ink); line-height: 0.8; letter-spacing: -2px; }
+    .gauge-value span { font-size: 15px; color: #7b8498; font-weight: 700; margin-top: 2px; }
+    .score-card h2 span { color: var(--orange2); font-size: 15px; display: block; margin-top: 10px;}
+    .score-card > p { width: 90%; margin: 8px auto 0; text-align: center; }
+    .score-guide { font-size: 9px; margin-top: auto; padding-top: 10px; text-align: center; color: var(--muted); font-weight: 500;}
+    .green { color: var(--green); font-weight: 700;} .amber { color: var(--orange); font-weight: 700;} .red { color: var(--red); font-weight: 700;}
+    
+    /* Laws Card */
+    .laws-card { height: 275px; }
+    .law-row { display: grid; grid-template-columns: 26px 65px 1fr 24px 24px; align-items: center; gap: 8px; margin: 12px 0; }
+    .law-icon { width: 26px; height: 26px; border-radius: 50%; background: #f0f1f3; color: var(--ink); display: grid; place-items: center; }
+    .law-icon svg { width: 14px; height: 14px; }
+    .law-row b { font-size: 11px; font-weight: 600; }
+    .law-row strong { font-size: 14px; color: var(--green); text-align: right; }
+    .law-row em { font-style: normal; color: #8893a8; font-size: 10px; }
+    .bar { height: 6px; background: #e2e5e9; border-radius: 6px; overflow: hidden; }
+    .law-bar { display: block; height: 100%; border-radius: 6px; transition: width 0.3s ease; }
+    .bg-green { background: var(--green) !important; }
+    .bg-orange { background: var(--orange) !important; }
+    .bg-red { background: var(--red) !important; }
+    .legend { font-size: 9px; margin-top: auto; display: flex; gap: 8px; align-items: center; justify-content: center; color: var(--muted);}
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .green-bg { background: var(--green); } .amber-bg { background: var(--orange); } .red-bg { background: var(--red); }
+    
+    /* Matrix Card */
+    .matrix-card { height: 275px; display: flex; flex-direction: column; }
+    .matrix-container { display: flex; flex-direction: column; flex-grow: 1; }
+    .matrix-wrapper { position: relative; padding-left: 18px; padding-bottom: 18px; margin-top: 4px; flex-grow: 1; }
+    .matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; height: 100%; }
+    .quadrant { border-radius: 6px; padding: 8px 10px; border: 1px solid var(--line); display: flex; flex-direction: column;}
+    .quadrant h4 { margin: 0 0 6px; font-size: 8.5px; font-weight: 800; display: flex; align-items: center; gap: 4px; text-transform: uppercase;}
+    .quadrant h4 svg { width: 10px; height: 10px; }
+    .quadrant ul { margin: 0; padding-left: 12px; font-size: 8.5px; line-height: 1.45; color: var(--ink); flex-grow: 1;}
+    .quadrant ul li { margin-bottom: 3px; }
+    .q1 { background: #f1f8f3; } .q1 h4 { color: var(--green); }
+    .q2 { background: #fff6ef; } .q2 h4 { color: var(--orange2); }
+    .q3 { background: #f3f8ff; } .q3 h4 { color: var(--blue); }
+    .q4 { background: #fbf6ff; } .q4 h4 { color: var(--purple); }
+    
+    /* Matrix Axes */
+    .y-axis { position: absolute; left: 0; top: 0; bottom: 18px; width: 14px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 8px; color: #8893a8; }
+    .y-axis strong { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 800; letter-spacing: 1px; color: var(--ink); }
+    .axis-line-y { position: absolute; right: 0px; top: 10px; bottom: 0; width: 1px; background: #dfe5ee; }
+    .axis-arrow-y { position: absolute; right: -2.5px; top: 6px; border-left: 3px solid transparent; border-right: 3px solid transparent; border-bottom: 4px solid #dfe5ee; }
+    
+    .x-axis { position: absolute; left: 18px; right: 0; bottom: 0; height: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 8px; color: #8893a8; }
+    .x-axis strong { font-weight: 800; letter-spacing: 1px; color: var(--ink); }
+    .axis-line-x { position: absolute; top: 0px; left: 0; right: 10px; height: 1px; background: #dfe5ee; }
+    .axis-arrow-x { position: absolute; top: -2.5px; right: 6px; border-top: 3px solid transparent; border-bottom: 3px solid transparent; border-left: 4px solid #dfe5ee; }
+    
+    .matrix-legend { font-size: 8px; margin-top: 8px; display: flex; gap: 12px; justify-content: center; color: var(--muted); font-weight: 500;}
+    .matrix-legend span { width: 8px; height: 8px; background: var(--green); display: inline-block; border-radius: 1px;}
+    .matrix-legend span:nth-child(2) { background: var(--orange2); }
+    .matrix-legend span:nth-child(3) { background: var(--purple); }
+    
+    /* Bottom Cards */
+    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    .sprint-card, .takeaway-card, .roadmap-card, .impact-card { height: 215px; }
+    
+    .duration { border: 1px solid #c8ded1; background: #f6fbf8; border-radius: 6px; padding: 10px; margin: 10px 0; display: flex; gap: 10px; align-items: center; }
+    .duration span { font-size: 18px; color: var(--green); display: flex; }
+    .duration span svg { width: 22px; height: 22px; }
+    .duration b { font-size: 9px; color: #31405b; text-transform: uppercase; }
+    .duration strong { margin-left: auto; color: var(--green); font-size: 16px; font-weight: 900;}
+    .sprint-card button { margin-top: auto; width: 100%; border: 0; background: var(--green); color: #fff; border-radius: 6px; padding: 10px; font-weight: 800; font-size: 9px; cursor: pointer; text-transform: uppercase;}
+    
+    .takeaway, .roadmap-step, .impact { display: grid; grid-template-columns: 26px 1fr; gap: 8px; margin: 8px 0; align-items: flex-start;}
+    .takeaway span, .impact span { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--green-soft); color: var(--green); font-weight: 900; }
+    .takeaway span svg, .impact span svg { width: 14px; height: 14px; }
+    .roadmap-step span { width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 9px; margin-top: 2px;}
+    .takeaway p, .roadmap-step p, .impact p { font-size: 9px; line-height: 1.4; margin: 0; color: var(--ink); }
+    .takeaway p strong, .roadmap-step p strong, .impact p strong { display: block; color: var(--ink); font-size: 10px; margin-bottom: 2px; }
+    
+    /* Quick Insights Footer */
+    .quick-insights { padding: 10px 14px; flex-shrink: 0;}
+    .quick-insights h3 { margin-bottom: 8px; }
+    .insights-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .insight { border-left: 1px solid var(--line); padding-left: 12px; display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: center; }
+    .insight:first-child { border-left: 0; padding-left: 0; }
+    .insight span { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; }
+    .insight span svg { width: 12px; height: 12px; }
+    .insight.insight-pill span { border: 1.5px solid var(--green); color: var(--green); }
+    .insight.warn span { border: 1.5px solid var(--orange2); color: var(--orange2); }
+    .insight p { font-size: 8.5px; line-height: 1.35; margin: 0; color: var(--ink); }
+  </style>
 </head>
 <body>
   <main class="report-page">
-    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="brand">
         <div class="logo-text">FORG<span>E</span></div>
         <div class="tagline">GROWTH STRATEGISTS</div>
       </div>
 
-      <section class="side-block">
+      <div class="sidebar-section">
         <div class="side-label">ACCOUNT</div>
-        <h2 id="company_name">—</h2>
-        <p id="company_industry">—</p>
-      </section>
+        <h2 id="company_name"></h2>
+        <p id="company_industry"></p>
+      </div>
 
-      <section class="side-block sidebar-section">
+      <div class="sidebar-section">
         <div class="side-label">DECISION MAKER</div>
-        <h2 id="decision_maker_name">—</h2>
-        <p id="decision_maker_role">—</p>
-      </section>
+        <h2 id="decision_maker_name"></h2>
+        <p id="decision_maker_role"></p>
+      </div>
 
-      <section class="side-block">
+      <div class="sidebar-section">
         <div class="side-label">REPORT PURPOSE</div>
-        <p id="opening_summary">—</p>
-      </section>
+        <p id="opening_summary"></p>
+      </div>
 
-      <section class="primary-opportunity">
-        <div class="target-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-        </div>
+      <div class="primary-opportunity">
+        <svg class="target-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         <div class="side-label">PRIMARY COMMERCIAL OPPORTUNITY</div>
-        <p id="primary_opportunity">—</p>
-      </section>
+        <p id="primary_opportunity"></p>
+      </div>
     </aside>
 
-    <!-- Main Content -->
     <section class="content">
-      
-      <!-- Header -->
       <header class="top-header">
-        <div class="header-titles">
+        <div>
           <h1 id="report_title">FORGE GROWTH OPPORTUNITY REPORT</h1>
-          <p id="report_subtitle">—</p>
+          <p id="report_subtitle"></p>
         </div>
-        <div class="report-date-block">
+        <div class="report-date">
           <span>REPORT DATE</span>
-          <strong id="report_date">—</strong>
-          <em id="report_status">(Updated)</em>
+          <strong id="report_date"></strong>
+          <em id="report_status"></em>
         </div>
       </header>
 
-      <!-- Meta Strip -->
       <section class="profile-strip">
-        <div class="profile-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
-          <span>INDUSTRY</span>
-          <strong id="meta_industry">—</strong>
-        </div>
-        <div class="profile-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-          <span>EMPLOYEES</span>
-          <strong id="company_employees">—</strong>
-        </div>
-        <div class="profile-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
-          <span>ESTABLISHED</span>
-          <strong id="company_established">—</strong>
-        </div>
-        <div class="profile-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
-          <span>CURRENCY</span>
-          <strong id="company_currency">—</strong>
-        </div>
-        <div class="profile-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
-          <span>COUNTRY</span>
-          <strong id="company_country">—</strong>
-        </div>
+        <div class="profile-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><span>INDUSTRY</span><strong id="meta_industry"></strong></div>
+        <div class="profile-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span>EMPLOYEES</span><strong id="company_employees"></strong></div>
+        <div class="profile-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><span>ESTABLISHED</span><strong id="company_established"></strong></div>
+        <div class="profile-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8M12 18V6"/></svg></div><span>CURRENCY</span><strong id="company_currency"></strong></div>
+        <div class="profile-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><span>COUNTRY</span><strong id="company_country"></strong></div>
       </section>
 
-      <!-- Grid Row 1 -->
       <section class="grid-main">
-        <!-- Score Card -->
         <article class="card score-card">
-          <h3>FORGE GROWTH SCORE <span>ⓘ</span></h3>
-          <div class="gauge-container">
-            <svg viewBox="0 0 160 90" class="gauge-svg">
-              <path d="M 20 80 A 60 60 0 0 1 140 80" fill="none" stroke="#e6e8ec" stroke-width="16" stroke-linecap="round" />
-              <path id="gauge_fill" d="M 20 80 A 60 60 0 0 1 140 80" fill="none" stroke="#f4a000" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
+          <h3>FORGE GROWTH SCORE <small>ⓘ</small></h3>
+          <div class="svg-gauge-container">
+            <svg viewBox="0 0 100 55" class="gauge-svg">
+              <!-- Perfect half circle background track -->
+              <path d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="#e6e8ec" stroke-width="8" stroke-linecap="round"/>
+              <!-- Colored Fill path binds accurately to JS total length 110 -->
+              <path id="gauge_fill" d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="110"/>
             </svg>
-            <div class="gauge-text">
-              <strong id="score">0</strong>
-              <small>/100</small>
+            <div class="gauge-value">
+              <strong id="score"></strong>
+              <span>/100</span>
             </div>
           </div>
-          <h4 id="verdict">—</h4>
-          <p id="summary">—</p>
-          <div class="score-legend">
-            Score guide: <span class="c-green">Strong (75-100)</span> <span class="c-amber">Moderate (50-74)</span> <span class="c-red">Weak (0-49)</span>
-          </div>
+          <h2><span id="verdict"></span></h2>
+          <p id="summary"></p>
+          <div class="score-guide">Score guide: <span class="green">Strong (75-100)</span> &nbsp;<span class="amber">Moderate (50-74)</span> &nbsp;<span class="red">Weak (0-49)</span></div>
         </article>
 
-        <!-- Growth Laws -->
         <article class="card laws-card">
-          <h3>THE FIVE GROWTH LAWS <span>ⓘ</span></h3>
-          <div class="laws-list">
-            <div class="law-row">
-              <div class="law-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line></svg></div>
-              <span class="law-label">Offer</span>
-              <div class="law-bar-bg"><div id="law_offer_bar" class="law-bar"></div></div>
-              <div class="law-score"><strong id="law_offer_score">0</strong> <small>/100</small></div>
-            </div>
-            <div class="law-row">
-              <div class="law-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></div>
-              <span class="law-label">Creative</span>
-              <div class="law-bar-bg"><div id="law_creative_bar" class="law-bar"></div></div>
-              <div class="law-score"><strong id="law_creative_score">0</strong> <small>/100</small></div>
-            </div>
-            <div class="law-row">
-              <div class="law-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg></div>
-              <span class="law-label">Conversion</span>
-              <div class="law-bar-bg"><div id="law_conversion_bar" class="law-bar"></div></div>
-              <div class="law-score"><strong id="law_conversion_score">0</strong> <small>/100</small></div>
-            </div>
-            <div class="law-row">
-              <div class="law-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="18" y="3" width="4" height="18"></rect><rect x="10" y="8" width="4" height="13"></rect><rect x="2" y="13" width="4" height="8"></rect></svg></div>
-              <span class="law-label">Measurement</span>
-              <div class="law-bar-bg"><div id="law_measurement_bar" class="law-bar"></div></div>
-              <div class="law-score"><strong id="law_measurement_score">0</strong> <small>/100</small></div>
-            </div>
-            <div class="law-row">
-              <div class="law-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-              <span class="law-label">Brand</span>
-              <div class="law-bar-bg"><div id="law_brand_bar" class="law-bar"></div></div>
-              <div class="law-score"><strong id="law_brand_score">0</strong> <small>/100</small></div>
-            </div>
-          </div>
-          <div class="legend" style="margin-top:auto; padding-top: 10px;">
-            <span class="dot green-bg"></span> Strong (75-100) 
-            <span class="dot amber-bg"></span> Moderate (50-74) 
-            <span class="dot red-bg"></span> Weak (0-49)
-          </div>
+          <h3>THE FIVE GROWTH LAWS <small>ⓘ</small></h3>
+          <div class="law-row"><span class="law-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg></span><b>Offer</b><div class="bar"><i id="law_offer_bar" class="law-bar" style="width: 0%"></i></div><strong id="law_offer_score"></strong><em>/100</em></div>
+          <div class="law-row"><span class="law-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 1 0 8.5 7.5c0 1.25.5 2.4 1.41 3.25.76.76 1.23 1.52 1.41 2.5Z"/></svg></span><b>Creative</b><div class="bar"><i id="law_creative_bar" class="law-bar" style="width: 0%"></i></div><strong id="law_creative_score"></strong><em>/100</em></div>
+          <div class="law-row"><span class="law-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span><b>Conversion</b><div class="bar"><i id="law_conversion_bar" class="law-bar" style="width: 0%"></i></div><strong id="law_conversion_score"></strong><em>/100</em></div>
+          <div class="law-row"><span class="law-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><b>Measurement</b><div class="bar"><i id="law_measurement_bar" class="law-bar" style="width: 0%"></i></div><strong id="law_measurement_score"></strong><em>/100</em></div>
+          <div class="law-row"><span class="law-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Brand</b><div class="bar"><i id="law_brand_bar" class="law-bar" style="width: 0%"></i></div><strong id="law_brand_score"></strong><em>/100</em></div>
+          <div class="legend"><span class="dot green-bg"></span>Strong (75-100) &nbsp;&nbsp;<span class="dot amber-bg"></span>Moderate (50-74) &nbsp;&nbsp;<span class="dot red-bg"></span>Weak (0-49)</div>
         </article>
 
-        <!-- Priority Matrix -->
         <article class="card matrix-card">
-          <h3>GROWTH PRIORITY MATRIX <span>ⓘ</span></h3>
-          <div class="matrix">
-            <div class="quadrant q1">
-              <h4 class="q-head"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:12px;"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg> HIGH IMPACT / QUICK WINS</h4>
-              <ul id="q1_html"></ul>
-            </div>
-            <div class="quadrant q2">
-              <h4 class="q-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> HIGH IMPACT / STRATEGIC</h4>
-              <ul id="q2_html"></ul>
-            </div>
-            <div class="quadrant q3">
-              <h4 class="q-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg> LOW IMPACT / QUICK WINS</h4>
-              <ul id="q3_html"></ul>
-            </div>
-            <div class="quadrant q4">
-              <h4 class="q-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg> FUTURE GROWTH</h4>
-              <ul id="q4_html"></ul>
+          <h3>GROWTH PRIORITY MATRIX <small>ⓘ</small></h3>
+          <div class="matrix-container">
+            <div class="matrix-wrapper">
+              <div class="y-axis"><span>High</span><strong>IMPACT</strong><span>Low</span><div class="axis-line-y"></div><div class="axis-arrow-y"></div></div>
+              <div class="matrix">
+                <div class="quadrant q1"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> HIGH IMPACT / QUICK WINS</h4><ul id="q1_html"></ul></div>
+                <div class="quadrant q2"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> HIGH IMPACT / STRATEGIC</h4><ul id="q2_html"></ul></div>
+                <div class="quadrant q3"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> LOW IMPACT / QUICK WINS</h4><ul id="q3_html"></ul></div>
+                <div class="quadrant q4"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> FUTURE GROWTH</h4><ul id="q4_html"></ul></div>
+              </div>
+              <div class="x-axis"><span>Low</span><strong>EFFORT</strong><span>High</span><div class="axis-line-x"></div><div class="axis-arrow-x"></div></div>
             </div>
           </div>
-          <div class="matrix-legend">
-            <span class="square green-bg"></span> Included in 30-Day Sprint 
-            <span class="square red-bg"></span> Recommended Next Sprint 
-            <span class="square purple-bg"></span> Future Opportunity
-          </div>
+          <div class="matrix-legend"><span></span>Included in 30-Day Sprint &nbsp;&nbsp;&nbsp;<span></span>Recommended Next Sprint &nbsp;&nbsp;&nbsp;<span></span>Future Opportunity</div>
         </article>
       </section>
 
-      <!-- Grid Row 2 -->
-      <section class="grid-row-2">
-        <!-- Recommended Sprint -->
+      <section class="bottom-grid">
         <article class="card sprint-card">
           <h3>RECOMMENDED SPRINT</h3>
-          <h2 id="sprint_name">—</h2>
-          <div class="duration">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0b6830" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <div style="display:flex; flex-direction:column;">
-              <b>SPRINT DURATION</b>
-              <strong id="sprint_duration">—</strong>
-            </div>
-          </div>
-          <p id="sprint_reason">—</p>
-          <button class="sprint-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px; margin-right:4px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg> START <span id="sprint_duration_btn">30-DAY</span> SPRINT. ACCELERATE GROWTH.</button>
+          <h2 id="sprint_name"></h2>
+          <div class="duration"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="15" r="2"/></svg></span><b>SPRINT DURATION</b><strong id="sprint_duration"></strong></div>
+          <p id="sprint_reason"></p>
+          <button>🚀 START <span id="sprint_duration_btn"></span> SPRINT. ACCELERATE GROWTH.</button>
         </article>
 
-        <!-- Key Takeaways -->
         <article class="card takeaway-card">
           <h3>KEY TAKEAWAYS</h3>
-          <div class="data-rows">
-            <div class="takeaway" id="takeaway_row_0">
-              <span class="row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span>
-              <p id="takeaway_0"></p>
-            </div>
-            <div class="takeaway" id="takeaway_row_1">
-              <span class="row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
-              <p id="takeaway_1"></p>
-            </div>
-            <div class="takeaway" id="takeaway_row_2">
-              <span class="row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg></span>
-              <p id="takeaway_2"></p>
-            </div>
-            <div class="takeaway" id="takeaway_row_3">
-              <span class="row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></span>
-              <p id="takeaway_3"></p>
-            </div>
-          </div>
+          <div class="takeaway" id="takeaway_row_0"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><p id="takeaway_0"></p></div>
+          <div class="takeaway" id="takeaway_row_1"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><p id="takeaway_1"></p></div>
+          <div class="takeaway" id="takeaway_row_2"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span><p id="takeaway_2"></p></div>
+          <div class="takeaway" id="takeaway_row_3" style="display:none;"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><p id="takeaway_3"></p></div>
         </article>
 
-        <!-- 30-Day Sprint Roadmap -->
         <article class="card roadmap-card">
           <h3>30-DAY SPRINT ROADMAP</h3>
-          <div class="data-rows">
-            <div class="roadmap-step"><span class="row-num">1</span><p id="roadmap_w1"></p></div>
-            <div class="roadmap-step"><span class="row-num">2</span><p id="roadmap_w2"></p></div>
-            <div class="roadmap-step"><span class="row-num">3</span><p id="roadmap_w3"></p></div>
-            <div class="roadmap-step"><span class="row-num">4</span><p id="roadmap_w4"></p></div>
-          </div>
+          <div class="roadmap-step"><span>1</span><p id="roadmap_w1"></p></div>
+          <div class="roadmap-step"><span>2</span><p id="roadmap_w2"></p></div>
+          <div class="roadmap-step"><span>3</span><p id="roadmap_w3"></p></div>
+          <div class="roadmap-step"><span>4</span><p id="roadmap_w4"></p></div>
         </article>
 
-        <!-- Commercial Impact Summary -->
         <article class="card impact-card">
           <h3>COMMERCIAL IMPACT SUMMARY</h3>
-          <div class="data-rows">
-            <div class="impact" id="impact_row_0">
-              <span class="row-ic outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span>
-              <p id="impact_0"></p>
-            </div>
-            <div class="impact" id="impact_row_1">
-              <span class="row-ic outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
-              <p id="impact_1"></p>
-            </div>
-            <div class="impact" id="impact_row_2">
-              <span class="row-ic outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
-              <p id="impact_2"></p>
-            </div>
-            <div class="impact" id="impact_row_3">
-              <span class="row-ic outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
-              <p id="impact_3"></p>
-            </div>
-          </div>
+          <div class="impact" id="impact_row_0"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><p id="impact_0"></p></div>
+          <div class="impact" id="impact_row_1"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><p id="impact_1"></p></div>
+          <div class="impact" id="impact_row_2"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8M12 18V6"/></svg></span><p id="impact_2"></p></div>
+          <div class="impact" id="impact_row_3"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><p id="impact_3"></p></div>
         </article>
       </section>
 
-      <!-- Quick Insights -->
       <section class="card quick-insights">
         <h3>QUICK INSIGHTS</h3>
         <div class="insights-row">
-          <div class="insight-pill">
-            <span class="insight-ic check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            <p id="insight_0"></p>
-          </div>
-          <div class="insight-pill">
-            <span class="insight-ic check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            <p id="insight_1"></p>
-          </div>
-          <div class="insight-pill">
-            <span class="insight-ic warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></span>
-            <p id="insight_2"></p>
-          </div>
-          <div class="insight-pill">
-            <span class="insight-ic warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></span>
-            <p id="insight_3"></p>
-          </div>
-          <div class="insight-pill" style="border-right: none;">
-            <span class="insight-ic warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></span>
-            <p id="insight_4"></p>
-          </div>
+          <div class="insight insight-pill"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p id="insight_0"></p></div>
+          <div class="insight insight-pill"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><p id="insight_1"></p></div>
+          <div class="insight warn insight-pill"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><p id="insight_2"></p></div>
+          <div class="insight warn insight-pill"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><p id="insight_3"></p></div>
+          <div class="insight warn insight-pill"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><p id="insight_4"></p></div>
         </div>
       </section>
-
     </section>
   </main>
-  <script src="report.js"></script>
 </body>
 </html>
