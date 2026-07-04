@@ -6,7 +6,7 @@ const DATA_URL = "";
 
 const SAMPLE_DATA = {
   "company": {
-    "name": "KO-EXPERIENCE (โค-เอ็กซ์พีเรียนซ์)",
+    "name": "KO-EXPERIENCE",
     "website": "https://ko-experience.com",
     "industry": "UX Consult & UI Development",
     "country": "Thailand",
@@ -114,9 +114,9 @@ function setHTML(id, html) {
 }
 
 function scoreBand(score) {
-  if (score >= 75) return { hex: '#16a34a', barClass: 'bg-green' };
-  if (score >= 50) return { hex: '#ea580c', barClass: 'bg-orange' };
-  return { hex: '#dc2626', barClass: 'bg-red' };
+  if (score >= 75) return { hex: '#0b6830', barClass: 'bg-green' };
+  if (score >= 50) return { hex: '#f4a000', barClass: 'bg-orange' };
+  return { hex: '#ef2d18', barClass: 'bg-red' };
 }
 
 function itemToText(item, asHtml = false) {
@@ -243,7 +243,7 @@ function populateDashboard(data) {
   setText('report_title', 'FORGE GROWTH OPPORTUNITY REPORT');
   setText('report_subtitle', 'Your personalised growth assessment and recommended next steps.');
   
-  // Use a hardcoded string as fallback if we don't want to use dynamic date for matching
+  // Use a hardcoded formatted date for PDF consistency
   const dynamicDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   setText('report_date', dynamicDate); 
   setText('report_status', '(Updated)');
