@@ -210,52 +210,68 @@ function fillPills(prefix, items, maxSlots) {
   }
 }
 
-/* ---------------- Layout Safeguard Engine ---------------- */
+/* ============================================================
+   CLASS-AGNOSTIC AUTOMATIC LAYOUT PROTECTION ENGINE
+   ============================================================ */
 
-// Handles single-line horizontal clip or targeted standalone blocks
-function autoFitSingleElement(elementId, minSize = 8, containerSelector = null) {
-  const target = document.getElementById(elementId);
-  if (!target) return;
+// Protects standard bullet point lists inside any matrix quadrant card box
+function autoFitListId(ulId, minSize = 7) {
+  const ul = el(ulId);
+  if (!ul) return;
+  const container = ul.parentElement; // Finds your card element container automatically
+  if (!container) return;
 
-  let size = parseFloat(window.getComputedStyle(target).fontSize);
+  const items = ul.querySelectorAll('li');
+  if (!items.length) return;
+
+  let currentSize = parseFloat(window.getComputedStyle(items[0]).fontSize);
   let count = 0;
 
-  if (containerSelector) {
-    const container = target.closest(containerSelector);
-    if (!container) return;
-    while (container.scrollHeight > container.clientHeight && size > minSize && count < 20) {
-      size -= 0.5;
-      target.style.fontSize = size + 'px';
-      count++;
-    }
-  } else {
-    const originalWhiteSpace = target.style.whiteSpace;
-    target.style.whiteSpace = 'nowrap';
-    while (target.scrollWidth > target.clientWidth && size > minSize && count < 20) {
-      size -= 0.5;
-      target.style.fontSize = size + 'px';
-      count++;
-    }
-    target.style.whiteSpace = originalWhiteSpace;
+  // Shrink font size incrementally until the text fits within the parent card box height
+  while (container.scrollHeight > container.clientHeight && currentSize > minSize && count < 40) {
+    currentSize -= 0.5;
+    items.forEach(li => li.style.fontSize = currentSize + 'px');
+    count++;
   }
 }
 
-// Handles complex dashboard cards with multiple elements shifting the layout height
-function autoFitContainerText(containerSelector, textSelector, minSize = 7) {
-  const container = document.querySelector(containerSelector);
+// Protects single blocks of text or paragraphs using its immediate parent element container boundary
+function autoFitTextId(elementId, minSize = 8) {
+  const target = el(elementId);
+  if (!target) return;
+  const container = target.parentElement;
   if (!container) return;
 
-  const textElements = container.querySelectorAll(textSelector);
-  if (textElements.length === 0) return;
-
-  let currentSize = parseFloat(window.getComputedStyle(textElements[0]).fontSize);
+  let currentSize = parseFloat(window.getComputedStyle(target).fontSize);
   let count = 0;
 
-  while (container.scrollHeight > container.clientHeight && currentSize > minSize && count < 30) {
+  while (container.scrollHeight > container.clientHeight && currentSize > minSize && count < 40) {
     currentSize -= 0.5;
-    textElements.forEach((element) => {
-      element.style.fontSize = currentSize + 'px';
-    });
+    target.style.fontSize = currentSize + 'px';
+    count++;
+  }
+}
+
+// Automatically balances mapped text rows inside cards (Takeaways, Commercial Impacts)
+function autoFitRowGroup(prefix, maxSlots, minSize = 7) {
+  const firstRow = el(`${prefix}_row_0`);
+  if (!firstRow) return;
+  const container = firstRow.parentElement;
+  if (!container) return;
+
+  const textEls = [];
+  for (let i = 0; i < maxSlots; i++) {
+    const txt = el(`${prefix}_${i}`);
+    if (txt) textEls.push(txt);
+  }
+  if (!textEls.length) return;
+
+  let currentSize = parseFloat(window.getComputedStyle(textEls[0]).fontSize);
+  let count = 0;
+
+  while (container.scrollHeight > container.clientHeight && currentSize > minSize && count < 40) {
+    currentSize -= 0.5;
+    textEls.forEach(txt => txt.style.fontSize = currentSize + 'px');
     count++;
   }
 }
@@ -359,34 +375,39 @@ function populateDashboard(data) {
   fillRows('impact', growth.commercial_impact, 4);
   fillPills('insight', growth.quick_insights, 5);
 
-  /* ---------------- Programmatic Layout Protection Execution ---------------- */
+  /* ---------------- Execute Class-Agnostic Layout Protection ---------------- */
   
-  // 1. Sidebar Constraints
-  autoFitSingleElement('company_name', 10, '.sidebar-section');
-  autoFitSingleElement('company_industry', 9, '.sidebar-section');
-  autoFitSingleElement('opening_summary', 8, '.sidebar-section');
-  autoFitSingleElement('primary_opportunity', 8, '.primary-opportunity');
+  // 1. Matrix Quad Grids Protection (Will keep squeezing text sizes dynamically until it sits inside the box)
+  autoFitListId('q1_html', 6.5);
+  autoFitListId('q2_html', 6.5);
+  autoFitListId('q3_html', 6.5);
+  autoFitListId('q4_html', 6.5);
 
-  // 2. Profile Strip Meta Controls (Horizontal overflow fallback)
-  autoFitSingleElement('meta_industry', 8);
-  autoFitSingleElement('company_employees', 8);
-  autoFitSingleElement('company_established', 8);
-  autoFitSingleElement('company_currency', 8);
-  autoFitSingleElement('company_country', 8);
+  // 2. Row Component Groups Protection
+  autoFitRowGroup('takeaway', 4, 7);
+  autoFitRowGroup('impact', 4, 7);
 
-  // 3. Grid Container Card Optimizations
-  autoFitContainerText('.score-card', '#summary, #verdict', 8);
-  autoFitContainerText('.sprint-card', '#sprint_reason', 8);
-  autoFitContainerText('.takeaway-card', '.takeaway p', 7);
-  autoFitContainerText('.roadmap-card', '.roadmap-step p', 7);
-  autoFitContainerText('.impact-card', '.impact p', 7);
-  autoFitContainerText('.quick-insights', '.insight p', 7);
+  // 3. 30-Day Roadmap Box Protection
+  const firstRoadmap = el('roadmap_w1');
+  if (firstRoadmap && firstRoadmap.parentElement) {
+    const container = firstRoadmap.parentElement;
+    const steps = [el('roadmap_w1'), el('roadmap_w2'), el('roadmap_w3'), el('roadmap_w4')].filter(Boolean);
+    let currentSize = parseFloat(window.getComputedStyle(firstRoadmap).fontSize);
+    let count = 0;
+    while (container.scrollHeight > container.clientHeight && currentSize > 7.5 && count < 30) {
+      currentSize -= 0.5;
+      steps.forEach(step => step.style.fontSize = currentSize + 'px');
+      count++;
+    }
+  }
 
-  // 4. Matrix Grid Scalers (Fits long text strings inside quadrants)
-  autoFitContainerText('.q1', '#q1_html li', 6.5);
-  autoFitContainerText('.q2', '#q2_html li', 6.5);
-  autoFitContainerText('.q3', '#q3_html li', 6.5);
-  autoFitContainerText('.q4', '#q4_html li', 6.5);
+  // 4. Standalone Content Blocks Protection
+  autoFitTextId('summary', 8);
+  autoFitTextId('sprint_reason', 8);
+  autoFitTextId('opening_summary', 8);
+  autoFitTextId('primary_opportunity', 8);
+  autoFitTextId('company_name', 9);
+  autoFitTextId('company_industry', 8);
 }
 
 /* ---------------- load & run ---------------- */
