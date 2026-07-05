@@ -212,6 +212,8 @@ function fillPills(prefix, items, maxSlots) {
 
 /* ---------------- main binding ---------------- */
 
+/* ---------------- main binding ---------------- */
+
 function populateDashboard(data) {
   const company = data.company || {};
   const dashboard = data.dashboard || {};
@@ -228,10 +230,15 @@ function populateDashboard(data) {
   setText('company_name', company.name);
   setText('company_industry', company.industry);
 
+  // UPDATED: Check for the new cname/crole in company, fallback to old decision_maker object
+  const dmName = company.cname || (decisionMaker ? decisionMaker.name : null);
+  const dmRole = company.crole || (decisionMaker ? decisionMaker.role : null);
+
   const dmSection = el('decision_maker_name') ? el('decision_maker_name').closest('.sidebar-section') : null;
-  if (decisionMaker && decisionMaker.name) {
-    setText('decision_maker_name', decisionMaker.name);
-    setText('decision_maker_role', decisionMaker.role);
+  
+  if (dmName) {
+    setText('decision_maker_name', dmName);
+    setText('decision_maker_role', dmRole);
     if (dmSection) dmSection.style.display = '';
   } else if (dmSection) {
     dmSection.style.display = 'none';
