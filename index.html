@@ -22,8 +22,8 @@
     }
     
     @page {
-      /* Updated to custom dimensions matching the new expanded height */
-      size: 1122px 1000px; 
+      /* Increased width, decreased height */
+      size: 1280px 900px; 
       margin: 0;
     }
     
@@ -40,10 +40,10 @@
       print-color-adjust: exact;
     }
     
-    /* Expanded Page Height */
+    /* Updated Page Dimensions */
     .report-page {
-      width: 1122px;
-      height: 1000px; /* Increased from 793px */
+      width: 1280px;
+      height: 900px;
       margin: 0 auto;
       background: #fff;
       display: grid;
@@ -56,7 +56,7 @@
     .sidebar {
       background: linear-gradient(180deg, #06182a, #06111f);
       color: #fff;
-      padding: 24px 16px; /* Slightly increased vertical padding */
+      padding: 24px 16px; 
       position: relative;
       display: flex;
       flex-direction: column;
@@ -73,7 +73,8 @@
     .side-block, .sidebar-section { border-top: 1px solid rgba(255,255,255,.25); padding: 20px 0; }
     .side-label { color: #ffce00; font-weight: 900; font-size: 10px; margin-bottom: 8px; }
     .sidebar h2 { font-size: 15px; margin: 0 0 4px; font-weight: 700; }
-    .sidebar p { font-size: 11px; line-height: 1.5; margin: 0; color: #d0d6e0; }
+    /* Font size increased */
+    .sidebar p { font-size: 12px; line-height: 1.5; margin: 0; color: #d0d6e0; }
     
     .primary-opportunity {
       position: absolute; left: 14px; right: 14px; bottom: 24px;
@@ -81,10 +82,11 @@
       border-radius: 8px; padding: 16px 12px;
     }
     .target-icon { width: 24px; height: 24px; color: #ffce00; margin-bottom: 6px; }
-    .primary-opportunity p { font-size: 10.5px; line-height: 1.45; }
+    /* Font size increased */
+    .primary-opportunity p { font-size: 11px; line-height: 1.45; }
     
     /* Main Content */
-    .content { padding: 20px 24px; display: flex; flex-direction: column; height: 1000px; /* Increased from 793px */ }
+    .content { padding: 20px 24px; display: flex; flex-direction: column; height: 900px; }
     
     .top-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
     .top-header h1 { font-size: 28px; line-height: 1; margin: 0 0 4px; font-weight: 900; letter-spacing: -0.5px; }
@@ -99,17 +101,20 @@
     .profile-card { border: 1px solid var(--line); border-radius: 6px; padding: 8px 8px 8px 46px; position: relative; min-height: 48px; display: flex; flex-direction: column; justify-content: center; }
     .profile-card .icon { position: absolute; left: 10px; top: 10px; width: 26px; height: 26px; border-radius: 50%; background: var(--green-soft); color: var(--green); display: grid; place-items: center; }
     .profile-card .icon svg { width: 14px; height: 14px; }
-    .profile-card span { display: block; font-size: 8px; font-weight: 800; letter-spacing: .5px; color: var(--muted); text-transform: uppercase; }
+    /* Font size increased */
+    .profile-card span { display: block; font-size: 9px; font-weight: 800; letter-spacing: .5px; color: var(--muted); text-transform: uppercase; }
     .profile-card strong { font-size: 12px; display: block; margin-top: 2px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
     
     /* Grid Main */
     .grid-main { display: grid; grid-template-columns: 1fr 1.15fr 1.35fr; gap: 16px; margin-bottom: 16px; flex: 1.25; min-height: 0; }
     
     .card { border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 16px; display: flex; flex-direction: column; overflow: hidden; }
-    .card h3 { margin: 0 0 10px; font-size: 10.5px; font-weight: 900; text-transform: uppercase; display: flex; align-items: center; gap: 6px;}
+    /* Font size increased */
+    .card h3 { margin: 0 0 10px; font-size: 11px; font-weight: 900; text-transform: uppercase; display: flex; align-items: center; gap: 6px;}
     .card h3 small { font-size: 12px; font-weight: 400; color: #8893a8; cursor: help; }
     .card h2 { margin: 0 0 6px; color: var(--green); font-size: 15px; line-height: 1.2; font-weight: 800; }
-    .card p { font-size: 10px; line-height: 1.48; margin: 0; color: #31405b; }
+    /* Font size increased */
+    .card p { font-size: 11px; line-height: 1.48; margin: 0; color: #31405b; }
     
     /* Score Card & SVG Gauge */
     .score-card { text-align: center; justify-content: space-between; height: 100%; min-height: 0; }
@@ -119,8 +124,10 @@
     .gauge-value strong { font-size: 42px; font-weight: 900; color: var(--ink); line-height: 0.8; letter-spacing: -2px; }
     .gauge-value span { font-size: 14px; color: #7b8498; font-weight: 700; margin-top: 2px; }
     .score-card h2 span { color: var(--orange2); font-size: 16px; display: block; margin-top: 12px;}
-    .score-card > p { width: 95%; margin: 8px auto 0; text-align: center; font-size: 10px; }
-    .score-guide { font-size: 9px; margin-top: auto; padding-top: 12px; text-align: center; color: var(--muted); font-weight: 500;}
+    /* Font size increased */
+    .score-card > p { width: 95%; margin: 8px auto 0; text-align: center; font-size: 11px; }
+    /* Font size increased */
+    .score-guide { font-size: 10px; margin-top: auto; padding-top: 12px; text-align: center; color: var(--muted); font-weight: 500;}
     .green { color: var(--green); font-weight: 700;} .amber { color: var(--orange); font-weight: 700;} .red { color: var(--red); font-weight: 700;}
     
     /* Laws Card */
@@ -128,15 +135,18 @@
     .law-row { display: grid; grid-template-columns: 24px 64px 1fr 24px 24px; align-items: center; gap: 8px; margin: 12px 0; }
     .law-icon { width: 26px; height: 26px; border-radius: 50%; background: #f0f1f3; color: var(--ink); display: grid; place-items: center; }
     .law-icon svg { width: 14px; height: 14px; }
-    .law-row b { font-size: 11px; font-weight: 600; }
+    /* Font size increased */
+    .law-row b { font-size: 12px; font-weight: 600; }
     .law-row strong { font-size: 13px; color: var(--green); text-align: right; }
-    .law-row em { font-style: normal; color: #8893a8; font-size: 9px; }
+    /* Font size increased */
+    .law-row em { font-style: normal; color: #8893a8; font-size: 10px; }
     .bar { height: 6px; background: #e2e5e9; border-radius: 6px; overflow: hidden; }
     .law-bar { display: block; height: 100%; border-radius: 6px; transition: width 0.3s ease; }
     .bg-green { background: var(--green) !important; }
     .bg-orange { background: var(--orange) !important; }
     .bg-red { background: var(--red) !important; }
-    .legend { font-size: 9px; margin-top: auto; display: flex; gap: 8px; align-items: center; justify-content: center; color: var(--muted);}
+    /* Font size increased */
+    .legend { font-size: 10px; margin-top: auto; display: flex; gap: 8px; align-items: center; justify-content: center; color: var(--muted);}
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
     .green-bg { background: var(--green); } .amber-bg { background: var(--orange); } .red-bg { background: var(--red); }
     
@@ -144,11 +154,15 @@
     .matrix-card { height: 100%; min-height: 0; display: flex; flex-direction: column; }
     .matrix-container { display: flex; flex-direction: column; flex-grow: 1; min-height: 0; }
     .matrix-wrapper { position: relative; padding-left: 20px; padding-bottom: 20px; margin-top: 6px; flex-grow: 1; display: flex; flex-direction: column; min-height: 0; }
-    .matrix { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; height: 100%; flex-grow: 1; }
-    .quadrant { border-radius: 6px; padding: 10px; border: 1px solid var(--line); display: flex; flex-direction: column; overflow: hidden; }
-    .quadrant h4 { margin: 0 0 6px; font-size: 8px; font-weight: 800; display: flex; align-items: center; gap: 4px; text-transform: uppercase;}
+    /* Reduced gap between inner cards */
+    .matrix { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 4px; height: 100%; flex-grow: 1; }
+    /* Adjusted padding for more horizontal space */
+    .quadrant { border-radius: 6px; padding: 8px; border: 1px solid var(--line); display: flex; flex-direction: column; overflow: hidden; }
+    /* Font size increased */
+    .quadrant h4 { margin: 0 0 6px; font-size: 9px; font-weight: 800; display: flex; align-items: center; gap: 4px; text-transform: uppercase;}
     .quadrant h4 svg { width: 12px; height: 12px; }
-    .quadrant ul { margin: 0; padding-left: 12px; font-size: 8.5px; line-height: 1.4; color: var(--ink); flex-grow: 1; overflow: hidden;}
+    /* Font size increased */
+    .quadrant ul { margin: 0; padding-left: 12px; font-size: 9.5px; line-height: 1.4; color: var(--ink); flex-grow: 1; overflow: hidden;}
     .quadrant ul li { margin-bottom: 4px; }
     .q1 { background: #f1f8f3; } .q1 h4 { color: var(--green); }
     .q2 { background: #fff6ef; } .q2 h4 { color: var(--orange2); }
@@ -156,17 +170,20 @@
     .q4 { background: #fbf6ff; } .q4 h4 { color: var(--purple); }
     
     /* Matrix Axes */
-    .y-axis { position: absolute; left: 0; top: 0; bottom: 20px; width: 14px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 8px; color: #8893a8; }
+    /* Font size increased */
+    .y-axis { position: absolute; left: 0; top: 0; bottom: 20px; width: 14px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 9px; color: #8893a8; }
     .y-axis strong { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 800; letter-spacing: 1px; color: var(--ink); }
     .axis-line-y { position: absolute; right: 0px; top: 12px; bottom: 0; width: 1px; background: #dfe5ee; }
     .axis-arrow-y { position: absolute; right: -2.5px; top: 8px; border-left: 3px solid transparent; border-right: 3px solid transparent; border-bottom: 4px solid #dfe5ee; }
     
-    .x-axis { position: absolute; left: 20px; right: 0; bottom: 0; height: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 8px; color: #8893a8; }
+    /* Font size increased */
+    .x-axis { position: absolute; left: 20px; right: 0; bottom: 0; height: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 9px; color: #8893a8; }
     .x-axis strong { font-weight: 800; letter-spacing: 1px; color: var(--ink); }
     .axis-line-x { position: absolute; top: 0px; left: 0; right: 12px; height: 1px; background: #dfe5ee; }
     .axis-arrow-x { position: absolute; top: -2.5px; right: 8px; border-top: 3px solid transparent; border-bottom: 3px solid transparent; border-left: 4px solid #dfe5ee; }
     
-    .matrix-legend { font-size: 8px; margin-top: 12px; display: flex; gap: 12px; justify-content: center; color: var(--muted); font-weight: 500;}
+    /* Font size increased */
+    .matrix-legend { font-size: 9px; margin-top: 12px; display: flex; gap: 12px; justify-content: center; color: var(--muted); font-weight: 500;}
     .matrix-legend span { width: 8px; height: 8px; background: var(--green); display: inline-block; border-radius: 1px;}
     .matrix-legend span:nth-child(2) { background: var(--orange2); }
     .matrix-legend span:nth-child(3) { background: var(--purple); }
@@ -178,16 +195,22 @@
     .duration { border: 1px solid #c8ded1; background: #f6fbf8; border-radius: 6px; padding: 10px; margin: 12px 0; display: flex; gap: 8px; align-items: center; }
     .duration span { font-size: 16px; color: var(--green); display: flex; }
     .duration span svg { width: 20px; height: 20px; }
-    .duration b { font-size: 9px; color: #31405b; text-transform: uppercase; }
+    /* Font size increased */
+    .duration b { font-size: 10px; color: #31405b; text-transform: uppercase; }
     .duration strong { margin-left: auto; color: var(--green); font-size: 16px; font-weight: 900;}
-    .sprint-card button { margin-top: auto; width: 100%; border: 0; background: var(--green); color: #fff; border-radius: 6px; padding: 10px; font-weight: 800; font-size: 10px; cursor: pointer; text-transform: uppercase;}
+    /* Font size increased */
+    .sprint-card button { margin-top: auto; width: 100%; border: 0; background: var(--green); color: #fff; border-radius: 6px; padding: 10px; font-weight: 800; font-size: 11px; cursor: pointer; text-transform: uppercase;}
     
-    .takeaway, .roadmap-step, .impact { display: grid; grid-template-columns: 24px 1fr; gap: 8px; margin: 10px 0; align-items: flex-start;}
+    /* Reduced margin to bring rows closer together */
+    .takeaway, .roadmap-step, .impact { display: grid; grid-template-columns: 24px 1fr; gap: 8px; margin: 6px 0; align-items: flex-start;}
     .takeaway span, .impact span { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--green-soft); color: var(--green); font-weight: 900; }
     .takeaway span svg, .impact span svg { width: 14px; height: 14px; }
-    .roadmap-step span { width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 9px; margin-top: 2px;}
-    .takeaway p, .roadmap-step p, .impact p { font-size: 9px; line-height: 1.4; margin: 0; color: var(--ink); }
-    .takeaway p strong, .roadmap-step p strong, .impact p strong { display: block; color: var(--ink); font-size: 10px; margin-bottom: 3px; }
+    /* Font size increased */
+    .roadmap-step span { width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 10px; margin-top: 2px;}
+    /* Font size increased */
+    .takeaway p, .roadmap-step p, .impact p { font-size: 10px; line-height: 1.4; margin: 0; color: var(--ink); }
+    /* Font size increased */
+    .takeaway p strong, .roadmap-step p strong, .impact p strong { display: block; color: var(--ink); font-size: 11px; margin-bottom: 3px; }
     
     /* Quick Insights Footer */
     .quick-insights { padding: 12px 16px; flex-shrink: 0;}
@@ -199,7 +222,8 @@
     .insight span svg { width: 12px; height: 12px; }
     .insight.insight-pill span { border: 1.5px solid var(--green); color: var(--green); }
     .insight.warn span { border: 1.5px solid var(--orange2); color: var(--orange2); }
-    .insight p { font-size: 9px; line-height: 1.35; margin: 0; color: var(--ink); }
+    /* Font size increased */
+    .insight p { font-size: 10px; line-height: 1.35; margin: 0; color: var(--ink); }
   </style>
 </head>
 <body>
