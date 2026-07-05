@@ -22,8 +22,8 @@
     }
     
     @page {
-      /* Increased height slightly to 960px to prevent truncation */
-      size: 1280px 960px; 
+      /* Increased width to 1440px for maximum horizontal breathing room */
+      size: 1440px 960px; 
       margin: 0;
     }
     
@@ -42,7 +42,7 @@
     
     /* Updated Page Dimensions */
     .report-page {
-      width: 1280px;
+      width: 1440px;
       height: 960px;
       margin: 0 auto;
       background: #fff;
@@ -148,7 +148,6 @@
     .quadrant { border-radius: 6px; padding: 8px; border: 1px solid var(--line); display: flex; flex-direction: column; overflow: hidden; }
     .quadrant h4 { margin: 0 0 6px; font-size: 9px; font-weight: 800; display: flex; align-items: center; gap: 4px; text-transform: uppercase;}
     .quadrant h4 svg { width: 12px; height: 12px; }
-    /* Removed overflow: hidden and tightened line height/margin so lists don't clip */
     .quadrant ul { margin: 0; padding-left: 12px; font-size: 9.5px; line-height: 1.35; color: var(--ink); flex-grow: 1;}
     .quadrant ul li { margin-bottom: 2px; }
     .q1 { background: #f1f8f3; } .q1 h4 { color: var(--green); }
@@ -183,7 +182,6 @@
     .duration strong { margin-left: auto; color: var(--green); font-size: 16px; font-weight: 900;}
     .sprint-card button { margin-top: auto; width: 100%; border: 0; background: var(--green); color: #fff; border-radius: 6px; padding: 10px; font-weight: 800; font-size: 11px; cursor: pointer; text-transform: uppercase;}
     
-    /* Tightened the vertical margin significantly so the bottom rows fit */
     .takeaway, .roadmap-step, .impact { display: grid; grid-template-columns: 24px 1fr; gap: 8px; margin: 4px 0; align-items: flex-start;}
     .takeaway span, .impact span { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--green-soft); color: var(--green); font-weight: 900; }
     .takeaway span svg, .impact span svg { width: 14px; height: 14px; }
