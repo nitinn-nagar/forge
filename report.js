@@ -210,16 +210,7 @@ function fillPills(prefix, items, maxSlots) {
   }
 }
 
-/**
- * Ensures layout is fluid and not truncated for PDF rendering
- */
-function finalizeLayoutForPDF() {
-    const cards = document.querySelectorAll('.card, .sidebar, .report-page');
-    cards.forEach(card => {
-        card.style.height = 'auto';
-        card.style.minHeight = 'auto';
-    });
-}
+/* ---------------- main binding ---------------- */
 
 /* ---------------- main binding ---------------- */
 
@@ -239,6 +230,7 @@ function populateDashboard(data) {
   setText('company_name', company.name);
   setText('company_industry', company.industry);
 
+  // UPDATED: Check for the new cname/crole in company, fallback to old decision_maker object
   const dmName = company.cname || (decisionMaker ? decisionMaker.name : null);
   const dmRole = company.crole || (decisionMaker ? decisionMaker.role : null);
 
@@ -258,6 +250,7 @@ function populateDashboard(data) {
   setText('report_title', 'FORGE GROWTH OPPORTUNITY REPORT');
   setText('report_subtitle', 'Your personalised growth assessment and recommended next steps.');
   
+  // Use a hardcoded formatted date for PDF consistency
   const dynamicDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   setText('report_date', dynamicDate); 
   setText('report_status', '(Updated)');
@@ -322,9 +315,6 @@ function populateDashboard(data) {
 
   fillRows('impact', growth.commercial_impact, 4);
   fillPills('insight', growth.quick_insights, 5);
-
-  // Final layout adjustment for PDF
-  finalizeLayoutForPDF();
 }
 
 /* ---------------- load & run ---------------- */
